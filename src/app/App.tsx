@@ -1,4 +1,6 @@
 import React from 'react';
+import PatternInput from '../features/PatternInput';
+
 import './App.css';
 
 function App() {
@@ -8,35 +10,7 @@ function App() {
         <h1>samchencode</h1>
       </nav>
 
-      {/* eslint-disable-next-line no-script-url */}
-      <form className="pattern-input" action="javascript:void(0);">
-      <ul className="pattern-input__list">
-          <li className="pattern-input__row">
-            <label htmlFor="pattern--1">ReGex Pattern 1</label>
-            <div className="pattern-input__input-group">
-              <input type="text" id="pattern--1" placeholder="/.*/g" />
-              <button>Remove</button>
-            </div>
-          </li>
-          <li className="pattern-input__row">
-            <label htmlFor="pattern--1">ReGex Pattern 1</label>
-            <div className="pattern-input__input-group">
-              <input type="text" id="pattern--1" placeholder="/.*/g" />
-              <button>Remove</button>
-            </div>
-          </li>
-          <li className="pattern-input__row">
-            <label htmlFor="pattern--1">ReGex Pattern 1</label>
-            <div className="pattern-input__input-group">
-              <input type="text" id="pattern--1" placeholder="/.*/g" />
-              <button>Remove</button>
-            </div>
-          </li>
-          <li className="pattern-input__row pattern-input__row--full">
-            <button className="pattern-input__new">New</button>
-          </li>
-        </ul>
-      </form>
+      <PatternInput />
 
       <div className="text-display__container">
         <h3 className="text-display__label">Input</h3>
