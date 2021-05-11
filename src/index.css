@@ -1,7 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
 :root {
   --bg: white;
   --accent: gold;
@@ -17,6 +13,11 @@
   --border-focus: 1px solid var(--accent);
   --border-radius-sm: 0.3rem;
   --border-radius: 0.5rem;
+}
+
+* {
+  box-sizing: border-box;
+  color: var(--dark);
 }
 
 body {
