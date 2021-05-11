@@ -18,6 +18,7 @@
 * {
   box-sizing: border-box;
   color: var(--dark);
+  font-family: 'Lato', sans-serif;
 }
 
 body {
