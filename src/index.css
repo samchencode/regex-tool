@@ -1,3 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --space: 1em;
+  --border: 1px solid gray;
+}
+
 body {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
   margin: 0;
 }
