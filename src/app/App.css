@@ -81,8 +81,6 @@
 
 .text-display {
   position: relative;
-  border: var(--border);
-  border-radius: var(--border-radius);
   margin: 0 var(--space);
 }
 
@@ -96,6 +94,16 @@
   position: absolute;
   padding: 0.5em;
   border: none;
+}
+
+textarea.text-display__input {
+  border: 1px solid black;
+  border-radius: var(--border-radius);
+}
+
+.text-display__input:focus {
+  outline: none;
+  border: var(--border-focus);
 }
 
 .text-display__highlight-overlay {

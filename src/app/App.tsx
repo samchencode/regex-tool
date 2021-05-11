@@ -25,7 +25,7 @@ function App() {
       </form>
 
       <div className="text-display">
-        <textarea className="text-display__input">
+        <textarea className="text-display__input" placeholder="Input text to search...">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum,
           vero.
         </textarea>
