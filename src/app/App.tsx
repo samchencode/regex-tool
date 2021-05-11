@@ -24,15 +24,18 @@ function App() {
         </ul>
       </form>
 
-      <div className="text-display">
-        <textarea className="text-display__input" placeholder="Input text to search...">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum,
-          vero.
-        </textarea>
-        <textarea className="text-display__highlight-overlay">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum,
-          vero.
-        </textarea>
+      <div className="text-display__container">
+        <h3>Input</h3>
+        <div className="text-display">
+          <textarea className="text-display__input" placeholder="Input text to search...">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum,
+            vero.
+          </textarea>
+          <textarea className="text-display__highlight-overlay">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum,
+            vero.
+          </textarea>
+        </div>
       </div>
 
       <nav className="bottom-nav">
