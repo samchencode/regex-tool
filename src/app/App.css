@@ -52,7 +52,7 @@
 }
 
 .pattern-input__input-group input {
-  flex-shrink: 8;
+  flex-grow: 1;
   min-width: 0;
   border: none;
   border-bottom: var(--border);
@@ -61,7 +61,6 @@
 }
 
 .pattern-input__input-group button {
-  flex: 1;
   background: var(--primary);
   border: var(--border);
   border-radius: var(--border-radius-sm);
