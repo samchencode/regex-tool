@@ -1,6 +1,7 @@
 import React from 'react';
 import PatternInput from '../features/PatternInput';
 import TextDisplay from '../features/TextDisplay';
+import BottomNav from '../features/BottomNav';
 
 import './App.css';
 
@@ -13,14 +14,7 @@ function App() {
 
       <PatternInput />
       <TextDisplay />
-      
-      <nav className="bottom-nav">
-        <ul className="bottom-nav__list">
-          <li className="bottom-nav__item">Input</li>
-          <li className="bottom-nav__item">List</li>
-          <li className="bottom-nav__item">Replace</li>
-        </ul>
-      </nav>
+      <BottomNav />
     </div>
   );
 }

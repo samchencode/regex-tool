@@ -12,24 +12,3 @@
   padding: 0 1em;
   border-bottom: var(--border);
 }
-
-.bottom-nav {
-  padding: 0 1em;
-  border-top: var(--border);
-}
-
-.bottom-nav__list {
-  height: 50px;
-  display: flex;
-  align-items: center;
-}
-
-.bottom-nav__item {
-  border-right: var(--border);
-  flex: 1;
-  text-align: center;
-}
-
-.bottom-nav__item:last-child {
-  border: none;
-}
