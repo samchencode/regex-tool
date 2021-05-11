@@ -38,9 +38,9 @@
   margin-bottom: 1em;
 }
 
-.pattern-input__row:last-child {
+.pattern-input__row--full {
   border: none;
-  padding: var(--space-sm) 0;
+  padding: 0;
 }
 
 .pattern-input__row label {
