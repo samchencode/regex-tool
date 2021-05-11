@@ -2,11 +2,15 @@ import React from 'react';
 
 const Pattern = () => (
   <li className="pattern-input__row">
-    <label htmlFor="pattern--1">ReGex Pattern 1</label>
-    <div className="pattern-input__input-group">
-      <input type="text" id="pattern--1" placeholder="/.*/g" />
-      <button>Remove</button>
+    <div className="pattern-input__input-group pattern-input__input-group--match">
+      <label htmlFor="match-pattern-1">ReGex Match 1</label>
+      <input type="text" id="match-pattern-1" placeholder="/.*/g" />
     </div>
+    <div className="pattern-input__input-group pattern-input__input-group--operation">
+      <label htmlFor="operation-pattern-1">ReGex Operation 1</label>
+      <input type="text" id="operation-pattern-1" placeholder="$&" />
+    </div>
+    <button>Remove</button>
   </li>
 );
 

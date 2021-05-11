@@ -21,7 +21,6 @@
 
 .pattern-input__row {
   display: flex;
-  flex-direction: column;
   border: var(--border);
   border-radius: var(--border-radius);
   padding: var(--space-sm);
@@ -33,20 +32,30 @@
   padding: 0;
 }
 
+.pattern-input__row--full button {
+  width: 100%;
+}
+
 .pattern-input__row label {
   font-size: .5em;
 }
 
 .pattern-input__input-group {
   display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-right: var(--space-sm);
+}
+
+.pattern-input__input-group--match:not(:only-child) {
+  display: none;
 }
 
 .pattern-input__input-group input {
-  flex-grow: 1;
   min-width: 0;
+  width: 100%;
   border: none;
   border-bottom: var(--border);
-  margin-right: var(--space-sm);
   font-size: 1.5em;
 }
 
@@ -66,4 +75,10 @@
   border: var(--border);
   padding: var(--space-sm);
   border-radius: var(--border-radius-sm);
+}
+
+@media only screen and (min-width: 800px) {
+  .pattern-input__input-group--match:not(:only-child) {
+    display: flex;
+  }  
 }
