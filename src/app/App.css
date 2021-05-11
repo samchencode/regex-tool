@@ -84,6 +84,11 @@
   margin: 0 var(--space);
 }
 
+.text-display__label {
+  margin: 0;
+  margin-bottom: var(--space-xs);
+}
+
 .text-display {
   position: relative;
   flex: 1;
