@@ -1,13 +1,32 @@
 .app {
+  --columns: var(--space) 1fr var(--space);
   display: grid;
   height: 100vh;
   grid-template-rows: auto 4fr 6fr auto;
+  grid-template-columns: var(--columns);
   row-gap: 1em;
   background: var(--bg);
 }
 
+.app > *,
+.app > nav > * {
+  grid-column: 2;
+}
+
+.app > nav {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: var(--columns);
+}
+
 .top-nav {
   height: 50px;
-  padding: 0 1em;
   border-bottom: var(--border);
+}
+
+@media only screen and (min-width: 800px) {
+  .app {
+    --columns: minmax(var(--space), 1fr) calc(800px - 2 * var(--space))
+      minmax(var(--space), 1fr);
+  }
 }

@@ -1,6 +1,5 @@
 .pattern-input {
   position: relative;
-  margin: 0 var(--space);
   overflow: hidden;
 }
 
