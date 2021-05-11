@@ -33,38 +33,56 @@
   display: flex;
   flex-direction: column;
   border: var(--border);
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   padding: var(--space-sm);
   margin-bottom: 1em;
+}
+
+.pattern-input__row:last-child {
+  border: none;
+  padding: var(--space-sm) 0;
 }
 
 .pattern-input__row label {
   font-size: .5em;
 }
 
-.pattern-input__row input {
+.pattern-input__input-group {
+  display: flex;
+}
+
+.pattern-input__input-group input {
+  flex-shrink: 8;
+  min-width: 0;
   border: none;
   border-bottom: var(--border);
-  padding: 5px;
+  margin-right: var(--space-sm);
   font-size: 1.5em;
 }
 
-.pattern-input__row input:focus {
+.pattern-input__input-group button {
+  flex: 1;
+  background: var(--primary);
+  border: var(--border);
+  border-radius: var(--border-radius-sm);
+}
+
+.pattern-input__input-group input:focus {
   outline: none;
   border-bottom: var(--border-focus);
 }
 
 .pattern-input__new {
-  background-color: gold;
+  background-color: var(--accent);
   border: var(--border);
-  padding: 0.5em;
-  font-size: 1.5em;
+  padding: var(--space-sm);
+  border-radius: var(--border-radius-sm);
 }
 
 .text-display {
   position: relative;
   border: var(--border);
-  border-radius: .5em;
+  border-radius: var(--border-radius);
   margin: 0 var(--space);
 }
 
@@ -87,8 +105,8 @@
 
 .top-nav {
   height: 50px;
-  background: red;
   padding: 0 1em;
+  border-bottom: var(--border);
 }
 
 .bottom-nav {

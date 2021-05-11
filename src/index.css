@@ -5,10 +5,18 @@
 :root {
   --bg: white;
   --accent: gold;
-  --space-sm: .5em;
-  --space: 1em;
+  --primary: lightgray;
+  --dark: #272727;
+  --blue: #009fb7;
+  --gray: #696773;
+
+  --space-xs: .25rem;
+  --space-sm: .5rem;
+  --space: 1rem;
   --border: 1px solid gray;
-  --border-focus: 1px solid gold;
+  --border-focus: 1px solid var(--accent);
+  --border-radius-sm: 0.3rem;
+  --border-radius: 0.5rem;
 }
 
 body {

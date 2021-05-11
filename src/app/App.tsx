@@ -13,22 +13,13 @@ function App() {
       <ul className="pattern-input__list">
           <li className="pattern-input__row">
             <label htmlFor="pattern--1">ReGex Pattern 1</label>
-            <input type="text" id="pattern--1" placeholder="/.*/g" />
+            <div className="pattern-input__input-group">
+              <input type="text" id="pattern--1" placeholder="/.*/g" />
+              <button>Remove</button>
+            </div>
           </li>
           <li className="pattern-input__row">
-            <label htmlFor="pattern--2">ReGex Pattern 2</label>
-            <input type="text" id="pattern--2" placeholder="/.*/g" />
-          </li>
-          <li className="pattern-input__row">
-            <label htmlFor="pattern--3">ReGex Pattern 3</label>
-            <input type="text" id="pattern--3" placeholder="/.*/g" />
-          </li>
-          <li className="pattern-input__row">
-            <label htmlFor="pattern--4">ReGex Pattern 4</label>
-            <input type="text" id="pattern--4" placeholder="/.*/g" />
-          </li>
-          <li>
-            <button className="pattern-input__new">New Rule</button>
+            <button className="pattern-input__new">New</button>
           </li>
         </ul>
       </form>
