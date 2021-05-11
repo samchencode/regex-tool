@@ -3,8 +3,12 @@
 }
 
 :root {
+  --bg: white;
+  --accent: gold;
+  --space-sm: .5em;
   --space: 1em;
   --border: 1px solid gray;
+  --border-focus: 1px solid gold;
 }
 
 body {

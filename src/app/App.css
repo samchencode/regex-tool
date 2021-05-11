@@ -4,21 +4,38 @@
   height: 100vh;
   grid-template-rows: 5fr 5fr auto;
   row-gap: 1em;
+  background: var(--bg);
 }
 
 .pattern-input {
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-  padding: 1em;
-  background: #ddd;
+  position: relative;
   margin: 0 var(--space);
+  overflow: hidden;
+}
+
+.pattern-input::before {
+  content: '';
+  position: absolute;
+  background: linear-gradient(transparent, var(--bg));
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 5%;
+}
+
+.pattern-input__list {
+  overflow: auto;
+  height: 100%;
+  padding-bottom: 5%;
 }
 
 .pattern-input__row {
   display: flex;
   flex-direction: column;
-  padding-bottom: 1em;
+  border: var(--border);
+  border-radius: 5px;
+  padding: var(--space-sm);
+  margin-bottom: 1em;
 }
 
 .pattern-input__row label {
@@ -30,6 +47,11 @@
   border-bottom: var(--border);
   padding: 5px;
   font-size: 1.5em;
+}
+
+.pattern-input__row input:focus {
+  outline: none;
+  border-bottom: var(--border-focus);
 }
 
 .pattern-input__new {
