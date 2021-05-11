@@ -34,6 +34,10 @@
 
 .pattern-input__row--full button {
   width: 100%;
+  background-color: var(--accent);
+  border: var(--border);
+  padding: var(--space-sm);
+  border-radius: var(--border-radius-sm);
 }
 
 .pattern-input__row label {
@@ -68,13 +72,6 @@
 .pattern-input__input-group input:focus {
   outline: none;
   border-bottom: var(--border-focus);
-}
-
-.pattern-input__new {
-  background-color: var(--accent);
-  border: var(--border);
-  padding: var(--space-sm);
-  border-radius: var(--border-radius-sm);
 }
 
 @media only screen and (min-width: 800px) {
