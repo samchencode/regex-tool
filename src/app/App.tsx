@@ -4,6 +4,10 @@ import './App.css';
 function App() {
   return (
     <div className="app">
+      <nav className="top-nav">
+        <h1>samchencode</h1>
+      </nav>
+
       {/* eslint-disable-next-line no-script-url */}
       <form className="pattern-input" action="javascript:void(0);">
       <ul className="pattern-input__list">
