@@ -7,49 +7,6 @@
   background: var(--bg);
 }
 
-.text-display__container {
-  display: flex;
-  flex-direction: column;
-  margin: 0 var(--space);
-}
-
-.text-display__label {
-  margin: 0;
-  margin-bottom: var(--space-xs);
-}
-
-.text-display {
-  position: relative;
-  flex: 1;
-}
-
-.text-display textarea {
-  background: none;
-  resize: none;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  padding: 0.5em;
-  border: none;
-}
-
-textarea.text-display__input {
-  border: 1px solid black;
-  border-radius: var(--border-radius);
-}
-
-.text-display__input:focus {
-  outline: none;
-  border: var(--border-focus);
-}
-
-.text-display__highlight-overlay {
-  color: transparent;
-  z-index: -1;
-}
-
 .top-nav {
   height: 50px;
   padding: 0 1em;

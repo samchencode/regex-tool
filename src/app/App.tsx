@@ -1,5 +1,6 @@
 import React from 'react';
 import PatternInput from '../features/PatternInput';
+import TextDisplay from '../features/TextDisplay';
 
 import './App.css';
 
@@ -11,21 +12,8 @@ function App() {
       </nav>
 
       <PatternInput />
-
-      <div className="text-display__container">
-        <h3 className="text-display__label">Input</h3>
-        <div className="text-display">
-          <textarea className="text-display__input" placeholder="Input text to search...">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum,
-            vero.
-          </textarea>
-          <textarea className="text-display__highlight-overlay">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum,
-            vero.
-          </textarea>
-        </div>
-      </div>
-
+      <TextDisplay />
+      
       <nav className="bottom-nav">
         <ul className="bottom-nav__list">
           <li className="bottom-nav__item">Input</li>
