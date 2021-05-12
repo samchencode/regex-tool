@@ -50,6 +50,10 @@ button {
   background: none;
 }
 
+input::placeholder {
+  color: var(--gray);
+}
+
 textarea {
   white-space: nowrap;
   overflow: auto;

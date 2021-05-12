@@ -14,7 +14,10 @@ const Pattern = ({ type }: PatternRowProps) => (
   <li className="pattern-input__row">
     <div className="pattern-input__input-group pattern-input__input-group--match">
       <label htmlFor="match-pattern-1">ReGex Match 1</label>
-      <input type="text" id="match-pattern-1" placeholder="/.*/g" />
+      <div className="pattern-input__regex">
+        /<input id="match-pattern-1" type="text" placeholder=".*" />/
+        <span className="pattern-input__flag">g</span>
+      </div>
     </div>
     {type !== PatternRowType.PATTERN_ONLY && (
       <div className="pattern-input__input-group pattern-input__input-group--operation">
