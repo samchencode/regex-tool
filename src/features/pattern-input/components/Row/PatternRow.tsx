@@ -1,4 +1,6 @@
 import React from 'react';
+import './PatternRow.css';
+import './Row.css';
 
 enum PatternRowType {
   PATTERN_ONLY,

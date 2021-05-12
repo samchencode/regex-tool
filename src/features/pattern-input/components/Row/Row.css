@@ -1,0 +1,21 @@
+.pattern-input__row {
+  display: flex;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  padding: var(--space-sm);
+  margin-bottom: 1em;
+}
+
+.pattern-input__row--full {
+  border: none;
+  padding: 0;
+}
+
+.pattern-input__row--full button {
+  width: 100%;
+  background-color: var(--accent);
+  border: var(--border);
+  padding: var(--space-sm);
+  border-radius: var(--border-radius-sm);
+}
+
