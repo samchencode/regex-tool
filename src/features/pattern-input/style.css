@@ -51,7 +51,7 @@
   margin-right: var(--space-sm);
 }
 
-.pattern-input__input-group--match:not(:only-child) {
+.pattern-input__input-group--match:not(:only-of-type) {
   display: none;
 }
 
@@ -69,7 +69,7 @@
 }
 
 @media only screen and (min-width: 800px) {
-  .pattern-input__input-group--match:not(:only-child) {
+  .pattern-input__input-group--match:not(:only-of-type) {
     display: flex;
   }  
 }
