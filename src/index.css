@@ -2,6 +2,7 @@
   --bg: white;
   --accent: gold;
   --primary: lightgray;
+  --light: lightgray;
   --dark: #272727;
   --blue: #009fb7;
   --gray: #696773;
@@ -45,4 +46,12 @@ button {
 textarea {
   white-space: nowrap;
   overflow: auto;
+}
+
+code {
+  font-family: "Lucida Console", "Courier New", monospace;
+  background-color: var(--light);
+  margin: var(--space-xs);
+  padding: var(--space-xs);
+  color: var(--blue);
 }
