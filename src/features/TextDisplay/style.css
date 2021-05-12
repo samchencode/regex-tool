@@ -1,6 +1,15 @@
 .text-display__container {
   display: flex;
+}
+
+.text-display {
+  display: flex;
   flex-direction: column;
+  flex: 1;
+}
+
+.text-display:first-child {
+  margin-right: var(--space-sm);
 }
 
 .text-display__label {
@@ -8,12 +17,12 @@
   margin-bottom: var(--space-xs);
 }
 
-.text-display {
+.text-display__content {
   position: relative;
   flex: 1;
 }
 
-.text-display textarea {
+.text-display__content textarea {
   background: none;
   resize: none;
   top: 0;
@@ -25,12 +34,16 @@
   border: none;
 }
 
-textarea.text-display__input {
+.text-display--input:not(:only-child) {
+  display: none;
+}
+
+textarea.text-display__top {
   border: var(--border);
   border-radius: var(--border-radius);
 }
 
-.text-display__input:focus {
+.text-display__top:focus {
   outline: none;
   border: var(--border-focus);
 }
@@ -38,4 +51,10 @@ textarea.text-display__input {
 .text-display__highlight-overlay {
   color: transparent;
   z-index: -1;
+}
+
+@media only screen and (min-width: 800px) {
+  .text-display.text-display--input {
+    display: flex;
+  }
 }

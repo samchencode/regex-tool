@@ -1,1 +1,1 @@
-export { default } from './TextDisplay';
+export { default } from './TextDisplayContainer';
