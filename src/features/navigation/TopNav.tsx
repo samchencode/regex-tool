@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import './TopNav.css';
 
 const TopNav = () => (
   <nav className="top-nav">

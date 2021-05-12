@@ -1,6 +1,6 @@
 import React from 'react';
-import PatternInput from '../PatternInput';
-import TextDisplay from '../TextDisplay';
+import PatternInput from '../pattern-input';
+import TextDisplay from '../text-display';
 
 const ListMatchesScreen = () => (
   <>

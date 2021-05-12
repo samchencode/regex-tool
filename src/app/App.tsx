@@ -1,6 +1,5 @@
 import React from 'react';
-import TopNav from '../features/TopNav';
-import BottomNav from '../features/BottomNav';
+import { TopNav, BottomNav } from '../features/navigation';
 import Dashboard from '../features/dashboard';
 
 import './App.css';
