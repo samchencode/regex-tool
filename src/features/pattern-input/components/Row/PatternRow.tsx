@@ -8,9 +8,10 @@ enum PatternRowType {
 
 interface PatternRowProps {
   type: PatternRowType;
+  onClickRemove: () => void;
 }
 
-const Pattern = ({ type }: PatternRowProps) => (
+const Pattern = ({ type, onClickRemove }: PatternRowProps) => (
   <li className="pattern-input__row">
     <div className="pattern-input__input-group pattern-input__input-group--match">
       <label htmlFor="match-pattern-1">ReGex Match 1</label>
@@ -25,7 +26,7 @@ const Pattern = ({ type }: PatternRowProps) => (
         <input type="text" id="operation-pattern-1" placeholder="$&" />
       </div>
     )}
-    <button className="button--transparent">
+    <button className="button--transparent" onClick={onClickRemove}>
       <i className="fas fa-times"></i>
     </button>
   </li>
