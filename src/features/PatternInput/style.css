@@ -63,12 +63,6 @@
   font-size: 1.5em;
 }
 
-.pattern-input__input-group button {
-  background: var(--primary);
-  border: var(--border);
-  border-radius: var(--border-radius-sm);
-}
-
 .pattern-input__input-group input:focus {
   outline: none;
   border-bottom: var(--border-focus);

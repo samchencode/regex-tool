@@ -9,6 +9,9 @@
 }
 
 .bottom-nav__item {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
   border-right: var(--border);
   flex: 1;
   text-align: center;
@@ -16,6 +19,14 @@
 
 .bottom-nav__item:last-child {
   border: none;
+}
+
+.bottom-nav__label {
+  font-size: 0.5em;
+}
+
+.bottom-nav__icon {
+  font-size: 1.5em;
 }
 
 @media only screen and (min-width: 800px) {

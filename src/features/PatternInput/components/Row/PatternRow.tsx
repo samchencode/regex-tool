@@ -10,7 +10,7 @@ const Pattern = () => (
       <label htmlFor="operation-pattern-1">ReGex Operation 1</label>
       <input type="text" id="operation-pattern-1" placeholder="$&" />
     </div>
-    <button>Remove</button>
+    <button className="button--transparent"><i className="fas fa-times"></i></button>
   </li>
 );
 
