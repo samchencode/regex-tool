@@ -17,6 +17,10 @@
   --border-focus: 1px solid var(--accent);
   --border-radius-sm: 0.3rem;
   --border-radius: 0.5rem;
+
+  --font-lg: 1.25rem;
+  --font-md: 1rem;
+  --font-sm: 0.5rem;
 }
 
 * {
@@ -55,8 +59,7 @@ input::placeholder {
 }
 
 textarea {
-  white-space: nowrap;
-  overflow: auto;
+  font-size: var(--font-md);
 }
 
 code {

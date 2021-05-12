@@ -13,6 +13,10 @@
   margin-right: var(--space-sm);
 }
 
+.text-display--input:not(:only-child) {
+  display: none;
+}
+
 .text-display__label {
   margin: 0;
   margin-bottom: var(--space-xs);
@@ -23,7 +27,8 @@
   flex: 1;
 }
 
-.text-display__content textarea {
+.text-display__highlight-overlay,
+.text-display__top {
   background: none;
   resize: none;
   top: 0;
@@ -33,10 +38,9 @@
   position: absolute;
   padding: 0.5em;
   border: none;
-}
 
-.text-display--input:not(:only-child) {
-  display: none;
+  white-space: nowrap;
+  overflow: auto;
 }
 
 textarea.text-display__top {
@@ -50,8 +54,11 @@ textarea.text-display__top {
 }
 
 .text-display__highlight-overlay {
-  color: transparent;
-  z-index: -1;
+  color: red;
+  margin: 1px;
+
+  /* TODO: remove this when I add highlight feature */
+  text-shadow: 0 0 5px rgb(255, 255, 0);
 }
 
 .text-display__button--copy {
