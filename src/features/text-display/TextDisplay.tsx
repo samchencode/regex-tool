@@ -1,12 +1,17 @@
 import React from 'react';
 import './style.css';
 
+enum TextDisplayType {
+  INPUT,
+  OUTPUT
+}
+
 interface TextDisplayProps {
-  type: 'input' | 'output';
+  type: TextDisplayType;
 }
 
 const TextDisplay = (props: TextDisplayProps) => {
-  const isInput = props.type === 'input';
+  const isInput = props.type === TextDisplayType.INPUT;
 
   return (
     <div
@@ -37,3 +42,4 @@ const TextDisplay = (props: TextDisplayProps) => {
 };
 
 export default TextDisplay;
+export { TextDisplayType };
