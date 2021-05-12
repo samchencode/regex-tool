@@ -6,12 +6,8 @@ import NotFound from '../features/not-found';
 const Routes = () => (
   <Switch>
     <Redirect exact path="/" to="/match" />
-    <Route path="/match">
-      <Dashboard />
-    </Route>
-    <Route>
-      <NotFound />
-    </Route>
+    <Route path="/match" component={Dashboard} />
+    <Route component={NotFound} />
   </Switch>
 );
 

@@ -6,15 +6,9 @@ import ReplaceScreen from './ReplaceScreen';
 
 const Routes = () => (
   <Switch>
-    <Route exact path="/match/">
-      <HomeScreen />
-    </Route>
-    <Route path="/match/list">
-      <ListMatchesScreen />
-    </Route>
-    <Route path="/match/replace">
-      <ReplaceScreen />
-    </Route>
+    <Route exact path="/match/" component={HomeScreen} />
+    <Route path="/match/list" component={ListMatchesScreen} />
+    <Route path="/match/replace" component={ReplaceScreen} />
   </Switch>
 );
 
