@@ -1,10 +1,10 @@
 import React from 'react';
-import PatternInput from '../pattern-input';
+import PatternInput, { PatternRowType } from '../pattern-input';
 import TextDisplay from '../text-display';
 
 const ListMatchesScreen = () => (
   <>
-    <PatternInput />
+    <PatternInput type={PatternRowType.PATTERN_LIST} />
     <TextDisplay />
   </>
 );

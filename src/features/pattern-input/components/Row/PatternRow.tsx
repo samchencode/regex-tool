@@ -1,9 +1,9 @@
 import React from 'react';
 
 enum PatternRowType {
-  patternOnly,
-  patternList,
-  patternReplace,
+  PATTERN_ONLY,
+  PATTERN_LIST,
+  PATTERN_REPLACE,
 }
 
 interface PatternRowProps {
@@ -16,7 +16,7 @@ const Pattern = ({ type }: PatternRowProps) => (
       <label htmlFor="match-pattern-1">ReGex Match 1</label>
       <input type="text" id="match-pattern-1" placeholder="/.*/g" />
     </div>
-    {type !== PatternRowType.patternOnly && (
+    {type !== PatternRowType.PATTERN_ONLY && (
       <div className="pattern-input__input-group pattern-input__input-group--operation">
         <label htmlFor="operation-pattern-1">ReGex Operation 1</label>
         <input type="text" id="operation-pattern-1" placeholder="$&" />
@@ -29,4 +29,4 @@ const Pattern = ({ type }: PatternRowProps) => (
 );
 
 export default Pattern;
-export type { PatternRowType };
+export { PatternRowType };
