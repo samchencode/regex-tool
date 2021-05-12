@@ -1,0 +1,10 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: fit-content;
+}
+
+.not-found__icon {
+  font-size: 3em;
+}
