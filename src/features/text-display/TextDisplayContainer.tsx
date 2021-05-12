@@ -1,6 +1,5 @@
 import React from 'react';
-import TextDisplay from './TextDisplay';
-import { TextDisplayType } from './TextDisplay';
+import TextDisplay, { TextDisplayType } from './TextDisplay';
 import './style.css';
 
 const TextDisplayContainer = () => (
