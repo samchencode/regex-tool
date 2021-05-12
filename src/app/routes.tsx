@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Dashboard from '../features/dashboard';
-import NotFound from '../features/not-found';
+import DashboardScreen from '../features/dashboard';
+import NotFoundScreen from '../features/not-found';
 
 const Routes = () => (
   <Switch>
     <Redirect exact path="/" to="/match" />
-    <Route path="/match" component={Dashboard} />
-    <Route component={NotFound} />
+    <Route path="/match" component={DashboardScreen} />
+    <Route component={NotFoundScreen} />
   </Switch>
 );
 
