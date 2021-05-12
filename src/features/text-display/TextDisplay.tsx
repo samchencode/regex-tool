@@ -25,8 +25,8 @@ const TextDisplay = (props: TextDisplayProps) => {
       <h3 className="text-display__label">{isInput ? 'Input' : 'Output'}</h3>
       <div className="text-display__content">
         {isInput && <div className="text-display__highlight-overlay">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, nesciunt?
-          A consequatur, porro at ex quod hic placeat non amet?
+          <mark>Lorem ipsum dolor</mark> sit amet consectetur adipisicing elit. Quod, nesciunt?
+          A consequatur, porro at <mark>ex quod</mark> hic placeat non amet?
         </div>}
         <textarea
           className="text-display__top"

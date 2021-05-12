@@ -54,11 +54,12 @@ textarea.text-display__top {
 }
 
 .text-display__highlight-overlay {
-  color: red;
+  color: transparent;
   margin: 1px;
+}
 
-  /* TODO: remove this when I add highlight feature */
-  text-shadow: 0 0 5px rgb(255, 255, 0);
+.text-display__highlight-overlay mark {
+  color: transparent;
 }
 
 .text-display__button--copy {
