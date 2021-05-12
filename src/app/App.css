@@ -19,38 +19,10 @@
   grid-template-columns: var(--columns);
 }
 
-.top-nav {
-  height: 50px;
-  border-bottom: var(--border);
-}
-
-.top-nav__list {
-  display: flex;
-  align-items: flex-end;
-}
-
-.top-nav__item:not(.top-nav__item--title)  {
-  font-size: 1.2em;
-  padding: 0.1em var(--space-sm);
-  display: none;
-}
-
-.top-nav__item--title {
-  margin-right: var(--space-sm);
-}
-
-.top-nav__title {
-  margin: 0;
-}
-
 @media only screen and (min-width: 800px) {
   .app {
     --columns: minmax(var(--space), 1fr) calc(800px - 2 * var(--space))
       minmax(var(--space), 1fr);
-  }
-
-  .top-nav__item:not(.top-nav__item--title) {
-    display: block;
   }
 }
 
