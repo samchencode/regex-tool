@@ -5,7 +5,7 @@ import TextDisplay from '../text-display';
 const HomeScreen = () => (
   <>
     <PatternInput type={PatternRowType.PATTERN_ONLY} />
-    <TextDisplay />
+    <TextDisplay inputOnly />
   </>
 );
 

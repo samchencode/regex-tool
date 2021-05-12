@@ -2,10 +2,14 @@ import React from 'react';
 import TextDisplay, { TextDisplayType } from './TextDisplay';
 import './style.css';
 
-const TextDisplayContainer = () => (
+interface TextDisplayContainerProps {
+  inputOnly?: boolean;
+}
+
+const TextDisplayContainer = ({ inputOnly = false }: TextDisplayContainerProps) => (
   <div className="text-display__container">
     <TextDisplay type={TextDisplayType.INPUT} />
-    <TextDisplay type={TextDisplayType.OUTPUT} />
+    {!inputOnly && <TextDisplay type={TextDisplayType.OUTPUT} />}
   </div>
 );
 
