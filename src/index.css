@@ -1,16 +1,19 @@
 :root {
+  --blue: #009fb7;
+  --gray: #696773;
+  --red: #E84855;
+
   --bg: white;
   --accent: gold;
   --primary: lightgray;
-  --light: lightgray;
+  --danger: var(--red);
+  --light: #dddddd;
   --dark: #272727;
-  --blue: #009fb7;
-  --gray: #696773;
 
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space: 1rem;
-  --border: 1px solid gray;
+  --border: 1px solid var(--gray);
   --border-focus: 1px solid var(--accent);
   --border-radius-sm: 0.3rem;
   --border-radius: 0.5rem;
