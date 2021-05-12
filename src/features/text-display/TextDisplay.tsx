@@ -37,6 +37,8 @@ const TextDisplay = (props: TextDisplayProps) => {
           vero.
         </textarea>
       </div>
+      {/* TODO: make sure Output box isn't empty before displaying button */}
+      {!isInput && <button className="text-display__button--copy">Copy</button>}
     </div>
   );
 };
