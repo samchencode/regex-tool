@@ -1,6 +1,6 @@
 import React from 'react';
 import { TopNav, BottomNav } from '../features/navigation';
-import Dashboard from '../features/dashboard';
+import Routes from './routes';
 
 import './App.css';
 
@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="app">
       <TopNav />
-      <Dashboard />
+      <Routes />
       <BottomNav />
     </div>
   );

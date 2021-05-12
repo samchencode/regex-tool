@@ -8,12 +8,12 @@ const TopNav = () => (
       <li className="top-nav__item top-nav__item--title">
         <h1 className="top-nav__title">samchencode</h1>
       </li>
-      <Route exact path={['/', '/list', '/replace']}>
+      <Route path="/match">
         <li className="top-nav__item">
-          <Link to="/list">List Matches</Link>
+          <Link to="/match/list">List Matches</Link>
         </li>
         <li className="top-nav__item">
-          <Link to="/replace">Replace</Link>
+          <Link to="/match/replace">Replace</Link>
         </li>
       </Route>
     </ul>

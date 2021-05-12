@@ -3,21 +3,17 @@ import { Route, Switch } from 'react-router-dom';
 import HomeScreen from './HomeScreen';
 import ListMatchesScreen from './ListMatchesScreen';
 import ReplaceScreen from './ReplaceScreen';
-import NotFoundScreen from './NotFoundScreen';
 
 const Routes = () => (
   <Switch>
-    <Route exact path="/">
+    <Route exact path="/match/">
       <HomeScreen />
     </Route>
-    <Route path="/list">
+    <Route path="/match/list">
       <ListMatchesScreen />
     </Route>
-    <Route path="/replace">
+    <Route path="/match/replace">
       <ReplaceScreen />
-    </Route>
-    <Route>
-      <NotFoundScreen />
     </Route>
   </Switch>
 );
