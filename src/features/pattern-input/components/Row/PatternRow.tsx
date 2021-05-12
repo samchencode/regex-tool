@@ -18,6 +18,7 @@ const Pattern = ({ type, onClickRemove }: PatternRowProps) => (
       <div className="pattern-input__regex">
         /<input id="match-pattern-1" type="text" placeholder=".*" />/
         <span className="pattern-input__flag">g</span>
+        <div className="underline"></div>
       </div>
     </div>
     {type !== PatternRowType.PATTERN_ONLY && (

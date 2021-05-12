@@ -72,11 +72,10 @@
 }
 
 .pattern-input__regex {
-  padding: 1px 2px;
-  box-sizing: content-box;
-  border-bottom: 1px solid black;
+  padding: 1px 2px 2px 2px;
   font-size: 1.5rem;
   display: flex;
+  position: relative;
 }
 
 .pattern-input__regex,
@@ -86,11 +85,26 @@
 
 .pattern-input__regex input {
   display: inline;
-  min-width: 0;
+  width: 0;
+  flex: 1;
   padding: 0;
   font-size: 1.5rem;
   border: none;
 }
+
+.pattern-input__regex .underline {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border: none;
+  border-bottom: var(--border);
+}
+
+.pattern-input__regex input:focus ~ .underline {
+  border-bottom: var(--border-focus);
+}
+
 
 @media only screen and (min-width: 800px) {
   .pattern-input__input-group--match:not(:only-of-type) {
