@@ -20,8 +20,7 @@ const PatternInput = ({ type }: PatternInputProps) => {
   const dispatch = useAppDispatch();
 
   return (
-    // eslint-disable-next-line no-script-url
-    <form className="pattern-input" action="javascript:void(0);">
+    <form className="pattern-input">
       <ul className="pattern-input__list">
         {rows.map(({ id, pattern, flags, listFormat, replace }) => (
           <PatternRow
