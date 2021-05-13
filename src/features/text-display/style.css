@@ -54,6 +54,7 @@ textarea.text-display__top {
 }
 
 .text-display__highlight-overlay {
+  overflow: hidden;
   color: transparent;
   margin: 1px;
 }
