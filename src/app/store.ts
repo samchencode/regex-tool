@@ -1,7 +1,10 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import { patternReducer } from '../features/pattern-input';
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    pattern: patternReducer
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;
