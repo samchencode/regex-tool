@@ -1,4 +1,5 @@
 import { createSlice, createSelector } from '@reduxjs/toolkit';
+import type { RootState } from '../../app/store';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 interface Operation {
@@ -95,9 +96,9 @@ export const {
 export { initialState, makeOperation };
 export default patternSlice.reducer;
 
-export const selectOperations = (state: PatternState) => state;
-export const selectOperation = (state: PatternState, id: number) =>
-  state.find((op) => op.id === id);
+export const selectOperations = (state: RootState) => state.pattern;
+export const selectOperation = (state: RootState, id: number) =>
+  state.pattern.find((op) => op.id === id);
 export const selectOperationPattern = createSelector(
   selectOperation,
   (op) => op?.pattern

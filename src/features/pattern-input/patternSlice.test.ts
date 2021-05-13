@@ -30,26 +30,30 @@ describe('pattern slice', () => {
     ]);
 
     const newState = reducer(initialState, add());
+    const rootState = { pattern: newState };
 
-    expect(selectOperations(newState)).toEqual(expected);
+    expect(selectOperations(rootState)).toEqual(expected);
   });
 
   it('should remove operation at a given index', () => {
     const initialState = [makeOperation(1), makeOperation(2)];
 
     const newState = reducer(initialState, remove({ id: 1 }));
+    const rootState = { pattern: newState };
 
-    expect(selectOperation(newState, 2)).toEqual(expect.any(Object));
-    expect(selectOperation(newState, 1)).toBeUndefined();
+    expect(selectOperation(rootState, 2)).toEqual(expect.any(Object));
+    expect(selectOperation(rootState, 1)).toBeUndefined();
   });
 
   it('should move operation from one index to another', () => {
     const initialState = [makeOperation(1), makeOperation(2), makeOperation(3)];
     const newState = reducer(initialState, move({ id: 2, toIdx: 0 }));
-    expect(selectOperations(newState).findIndex((op) => op.id === 2)).toBe(0);
+    const rootState = { pattern: newState };
+    expect(selectOperations(rootState).findIndex((op) => op.id === 2)).toBe(0);
 
     const newState2 = reducer(initialState, move({ id: 2, toIdx: 2 }));
-    expect(selectOperations(newState2).findIndex((op) => op.id === 2)).toBe(2);
+    const rootState2 = { pattern: newState2 };
+    expect(selectOperations(rootState2).findIndex((op) => op.id === 2)).toBe(2);
   });
 
   it('should set pattern string', () => {
@@ -57,7 +61,8 @@ describe('pattern slice', () => {
       initialState,
       setPattern({ id: 1, pattern: 'hai' })
     );
-    expect(selectOperationPattern(newState, 1)).toBe('hai');
+    const rootState = { pattern: newState };
+    expect(selectOperationPattern(rootState, 1)).toBe('hai');
   });
 
   it('should set flags', () => {
@@ -65,7 +70,8 @@ describe('pattern slice', () => {
       initialState,
       setFlags({ id: 1, flags: ['m', 'i'] })
     );
-    expect(selectOperationFlags(newState, 1)).toEqual(['m', 'i']);
+    const rootState = { pattern: newState };
+    expect(selectOperationFlags(rootState, 1)).toEqual(['m', 'i']);
   });
 
   it('should set listFormat string', () => {
@@ -73,7 +79,8 @@ describe('pattern slice', () => {
       initialState,
       setListFormat({ id: 1, listFormat: '<< $& >>' })
     );
-    expect(selectOperationListFormat(newState, 1)).toBe('<< $& >>');
+    const rootState = { pattern: newState };
+    expect(selectOperationListFormat(rootState, 1)).toBe('<< $& >>');
   });
 
   it('should set replace string', () => {
@@ -81,6 +88,7 @@ describe('pattern slice', () => {
       initialState,
       setReplace({ id: 1, replace: '<< $& >>' })
     );
-    expect(selectOperationReplace(newState, 1)).toBe('<< $& >>');
+    const rootState = { pattern: newState };
+    expect(selectOperationReplace(rootState, 1)).toBe('<< $& >>');
   });
 });
