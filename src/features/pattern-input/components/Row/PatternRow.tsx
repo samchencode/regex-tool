@@ -10,30 +10,70 @@ enum PatternRowType {
 
 interface PatternRowProps {
   type: PatternRowType;
+  pattern: string;
+  flags: string[];
+  listFormat: string;
+  replace: string;
   onClickRemove: () => void;
+  onChangePattern: (pattern: string) => void;
+  onChangeListFormat: (listFormat: string) => void;
+  onChangeReplace: (replace: string) => void;
 }
 
-const Pattern = ({ type, onClickRemove }: PatternRowProps) => (
-  <li className="pattern-input__row">
-    <div className="pattern-input__input-group pattern-input__input-group--match">
-      <label htmlFor="match-pattern-1">ReGex Match 1</label>
-      <div className="pattern-input__regex">
-        /<input id="match-pattern-1" type="text" placeholder=".*" />/
-        <span className="pattern-input__flag">g</span>
-        <div className="underline"></div>
+const Pattern = ({
+  type,
+  pattern,
+  flags,
+  listFormat,
+  replace,
+  onClickRemove,
+  onChangePattern,
+  onChangeListFormat,
+  onChangeReplace,
+}: PatternRowProps) => {
+  const isListType = type === PatternRowType.PATTERN_LIST;
+  const operationValue = isListType ? listFormat : replace;
+  const operationHandleChange = isListType
+    ? onChangeListFormat
+    : onChangeReplace;
+
+  return (
+    <li className="pattern-input__row">
+      <div className="pattern-input__input-group pattern-input__input-group--match">
+        <label htmlFor="match-pattern-1">Regex Pattern</label>
+        <div className="pattern-input__regex">
+          /
+          <input
+            id="match-pattern-1"
+            type="text"
+            placeholder="<Regex Pattern Here>"
+            value={pattern}
+            onChange={(e) => onChangePattern(e.target.value)}
+          />
+          /<span className="pattern-input__flag">{flags.join('')}</span>
+          <div className="underline"></div>
+        </div>
       </div>
-    </div>
-    {type !== PatternRowType.PATTERN_ONLY && (
-      <div className="pattern-input__input-group pattern-input__input-group--operation">
-        <label htmlFor="operation-pattern-1">ReGex Operation 1</label>
-        <input type="text" id="operation-pattern-1" placeholder="$&" />
-      </div>
-    )}
-    <button className="button--transparent" onClick={onClickRemove}>
-      <i className="fas fa-times"></i>
-    </button>
-  </li>
-);
+      {type !== PatternRowType.PATTERN_ONLY && (
+        <div className="pattern-input__input-group pattern-input__input-group--operation">
+          <label htmlFor="operation-pattern-1">Regex Operation</label>
+          <input
+            type="text"
+            id="operation-pattern-1"
+            placeholder={
+              isListType ? '<List Formatting Here>' : '<Replace-With Here>'
+            }
+            value={operationValue}
+            onChange={e => operationHandleChange(e.target.value)}
+          />
+        </div>
+      )}
+      <button className="button--transparent" onClick={onClickRemove}>
+        <i className="fas fa-times"></i>
+      </button>
+    </li>
+  );
+};
 
 export default Pattern;
 export { PatternRowType };
