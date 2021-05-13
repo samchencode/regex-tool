@@ -77,6 +77,10 @@ describe('pattern slice', () => {
   });
 
   it('should set replace string', () => {
-    //
+    const newState = reducer(
+      initialState,
+      setReplace({ id: 1, replace: '<< $& >>' })
+    );
+    expect(selectOperationReplace(newState, 1)).toBe('<< $& >>');
   });
 });
