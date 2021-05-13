@@ -95,7 +95,7 @@ export const {
 export { initialState, makeOperation };
 export default patternSlice.reducer;
 
-export const selectPatterns = (state: PatternState) => state;
+export const selectOperations = (state: PatternState) => state;
 export const selectOperation = (state: PatternState, id: number) =>
   state.find((op) => op.id === id);
 export const selectOperationPattern = createSelector(

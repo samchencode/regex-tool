@@ -8,7 +8,7 @@ import reducer, {
   setFlags,
   setListFormat,
   setReplace,
-  selectPatterns,
+  selectOperations,
   selectOperation,
   selectOperationPattern,
   selectOperationFlags,
@@ -31,7 +31,7 @@ describe('pattern slice', () => {
 
     const newState = reducer(initialState, add());
 
-    expect(selectPatterns(newState)).toEqual(expected);
+    expect(selectOperations(newState)).toEqual(expected);
   });
 
   it('should remove operation at a given index', () => {
@@ -46,10 +46,10 @@ describe('pattern slice', () => {
   it('should move operation from one index to another', () => {
     const initialState = [makeOperation(1), makeOperation(2), makeOperation(3)];
     const newState = reducer(initialState, move({ id: 2, toIdx: 0 }));
-    expect(selectPatterns(newState).findIndex((op) => op.id === 2)).toBe(0);
+    expect(selectOperations(newState).findIndex((op) => op.id === 2)).toBe(0);
 
     const newState2 = reducer(initialState, move({ id: 2, toIdx: 2 }));
-    expect(selectPatterns(newState2).findIndex((op) => op.id === 2)).toBe(2);
+    expect(selectOperations(newState2).findIndex((op) => op.id === 2)).toBe(2);
   });
 
   it('should set pattern string', () => {
