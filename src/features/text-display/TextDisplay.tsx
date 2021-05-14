@@ -35,7 +35,6 @@ const TextDisplay = (props: TextDisplayProps) => {
   let matches: any[] = [];
   try {
     matches = regex.match(ops[0].pattern, ops[0].flags, value);
-    if(ops[0].pattern === '') console.log(matches);
   } catch (e) {
     matches = [];
   }
@@ -51,9 +50,9 @@ const TextDisplay = (props: TextDisplayProps) => {
       <div className="text-display__content">
         {isInput && (
           <div className="text-display__highlight-overlay" ref={overlayRef}>
-            { matches.length > 0 && split(value, matches.map(m => [m.startIdx, m.endIdx])).map(({inRange, value}) => inRange 
-            ? <mark style={{background: ops[0].color}}>{value}</mark>
-            : <span>{value}</span>) 
+            { matches.length > 0 && split(value, matches.map(m => [m.startIdx, m.endIdx])).map(({inRange, value}, k) => inRange 
+            ? <mark key={k} style={{background: ops[0].color}}>{value}</mark>
+            : <span key={k}>{value}</span>) 
             }
           </div>
         )}
