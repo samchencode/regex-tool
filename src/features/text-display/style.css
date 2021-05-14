@@ -61,6 +61,7 @@ textarea.text-display__top {
 
 .text-display__highlight-overlay * {
   color: transparent;
+  opacity: 0.5;
 }
 
 .text-display__button--copy {
