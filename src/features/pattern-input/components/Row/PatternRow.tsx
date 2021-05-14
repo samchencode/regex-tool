@@ -38,7 +38,7 @@ const Pattern = ({
   const operationHandleChange = isListType
     ? onChangeListFormat
     : onChangeReplace;
-
+  
   return (
     <li className="pattern-input__row">
       <i className="pattern-input__color-indicator" style={{'background': color}}></i>
@@ -71,7 +71,10 @@ const Pattern = ({
           />
         </div>
       )}
-      <button className="button--transparent" onClick={onClickRemove}>
+      <button className="button--transparent" onClick={e => {
+        e.preventDefault();
+        onClickRemove();
+      }}>
         <i className="fas fa-times"></i>
       </button>
     </li>

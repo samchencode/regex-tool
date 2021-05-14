@@ -7,7 +7,10 @@ interface ButtonRowProps {
 
 const ButtonRow = ({ onClick }: ButtonRowProps) => (
   <li className="pattern-input__row pattern-input__row--full">
-    <button onClick={onClick}><i className="fas fa-plus"></i></button>
+    <button onClick={e => {
+      e.preventDefault();
+      onClick();
+    }}><i className="fas fa-plus"></i></button>
   </li>
 );
 
