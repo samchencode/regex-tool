@@ -22,7 +22,7 @@ const PatternInput = ({ type }: PatternInputProps) => {
   return (
     <form className="pattern-input">
       <ul className="pattern-input__list">
-        {rows.map(({ id, pattern, flags, listFormat, replace }) => (
+        {rows.map(({ id, pattern, flags, listFormat, replace, color }) => (
           <PatternRow
             key={id}
             type={type}
@@ -30,6 +30,7 @@ const PatternInput = ({ type }: PatternInputProps) => {
             flags={flags}
             listFormat={listFormat}
             replace={replace}
+            color={color}
             onClickRemove={() => dispatch(remove({ id }))}
             onChangePattern={(pattern: string) => dispatch(setPattern({ id, pattern }))}
             onChangeListFormat={(listFormat: string) => dispatch(setListFormat({ id, listFormat }))}
