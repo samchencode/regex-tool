@@ -11,7 +11,7 @@ export const match = (pattern: string, flags: string[], input: string) => {
   }
 
   return Array.from(matches, (v) => ({
-    startIdx: v.index,
+    startIdx: v.index as number,
     endIdx: v[0].length + (v.index as number),
     input: v.input,
     match: [...v],
