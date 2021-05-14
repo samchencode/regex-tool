@@ -1,4 +1,13 @@
-export const match = (pattern: string, flags: string[], input: string) => {
+interface MatchResult {
+  startIdx: number;
+  endIdx: number;
+  input: string;
+  match: string[];
+}
+
+export const match = (pattern: string, flags: string[], input: string): MatchResult[] => {
+  if(pattern === '') return [];
+
   const regex = new RegExp(pattern, flags.join(''));
 
   let matches;
@@ -13,7 +22,7 @@ export const match = (pattern: string, flags: string[], input: string) => {
   return Array.from(matches, (v) => ({
     startIdx: v.index as number,
     endIdx: v[0].length + (v.index as number),
-    input: v.input,
+    input: v.input as string,
     match: [...v],
   }));
 };

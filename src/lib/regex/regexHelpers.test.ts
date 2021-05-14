@@ -2,6 +2,17 @@ import * as regex from './regexHelpers';
 
 describe('regex lib', () => {
   describe('#match', () => {
+    it('should return empty array if pattern is empty', () => {
+      const pattern = '';
+      const flags = ['g'];
+      const input = 'Hello World';
+      const regexResult = regex.match(pattern, flags, input);
+
+      const expected: any[] = [];
+
+      expect(regexResult).toEqual(expected);
+    })
+
     it('should denote all matches to regex pattern within input string', () => {
       const pattern = '.+';
       const flags = ['g', 'm'];
