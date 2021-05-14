@@ -59,7 +59,7 @@ textarea.text-display__top {
   margin: 1px;
 }
 
-.text-display__highlight-overlay mark {
+.text-display__highlight-overlay * {
   color: transparent;
 }
 

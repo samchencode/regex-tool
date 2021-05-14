@@ -1,4 +1,8 @@
 import React, { useRef, useState } from 'react';
+import { useAppSelector } from '../../app/hooks';
+import { patternSelectors } from '../pattern-input';
+import * as regex from '../../lib/regex';
+import split from './splitStringAtPairedIndicies';
 import './style.css';
 
 enum TextDisplayType {
@@ -26,6 +30,16 @@ const TextDisplay = (props: TextDisplayProps) => {
       'A consequatur, porro at ex quod hic placeat non amet?'
   );
 
+  const ops = useAppSelector(patternSelectors.selectOperations);
+
+  let matches: any[] = [];
+  try {
+    matches = regex.match(ops[0].pattern, ops[0].flags, value);
+    if(ops[0].pattern === '') console.log(matches);
+  } catch (e) {
+    matches = [];
+  }
+
   return (
     <div
       className={[
@@ -37,7 +51,10 @@ const TextDisplay = (props: TextDisplayProps) => {
       <div className="text-display__content">
         {isInput && (
           <div className="text-display__highlight-overlay" ref={overlayRef}>
-            {value}
+            { matches.length > 0 && split(value, matches.map(m => [m.startIdx, m.endIdx])).map(({inRange, value}) => inRange 
+            ? <mark style={{background: ops[0].color}}>{value}</mark>
+            : <span>{value}</span>) 
+            }
           </div>
         )}
         <textarea
