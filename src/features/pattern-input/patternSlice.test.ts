@@ -9,11 +9,13 @@ import reducer, {
   setListFormat,
   setReplace,
   selectOperations,
+  selectOperationIds,
   selectOperation,
   selectOperationPattern,
   selectOperationFlags,
   selectOperationListFormat,
   selectOperationReplace,
+  selectOperationColor,
 } from './patternSlice';
 
 describe('pattern slice', () => {
@@ -33,6 +35,21 @@ describe('pattern slice', () => {
     const rootState = { pattern: newState };
 
     expect(selectOperations(rootState)).toEqual(expected);
+  });
+
+  it('should add new operation with random color', () => {
+    const expected = expect.arrayContaining([
+      expect.objectContaining({ color: expect.any(String) }),
+      expect.objectContaining({ color: expect.any(String) }),
+    ]);
+
+    const newState = reducer(initialState, add());
+    const rootState = { pattern: newState };
+
+    expect(selectOperations(rootState)).toEqual(expected);
+
+    const ids = selectOperationIds(rootState);
+    expect(selectOperationColor(rootState, ids[0])).not.toBe(selectOperationColor(rootState, ids[1]))
   });
 
   it('should remove operation at a given index', () => {

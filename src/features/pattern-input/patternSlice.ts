@@ -8,6 +8,7 @@ interface Operation {
   flags: string[];
   listFormat: string;
   replace: string;
+  color: string;
 }
 
 type PatternState = Operation[];
@@ -18,11 +19,18 @@ const defaultOperation: Operation = {
   flags: ['g'],
   listFormat: '[ $& ]',
   replace: '$&',
+  color: '#ffd700',
 };
 
 const initialState: PatternState = [defaultOperation];
 
-const makeOperation = (id: number) => ({ ...defaultOperation, id });
+const randomColor = () =>
+  '#' + Math.floor(Math.random() * 16777215).toString(16);
+const makeOperation = (id: number) => ({
+  ...defaultOperation,
+  id,
+  color: randomColor(),
+});
 const findOperationById = (state: PatternState, id: number) =>
   state.find((op) => op.id === id);
 
@@ -97,6 +105,9 @@ export { initialState, makeOperation };
 export default patternSlice.reducer;
 
 export const selectOperations = (state: RootState) => state.pattern;
+export const selectOperationIds = createSelector(selectOperations, (state) =>
+  state.map((op) => op.id)
+);
 export const selectOperation = (state: RootState, id: number) =>
   state.pattern.find((op) => op.id === id);
 export const selectOperationPattern = createSelector(
@@ -114,4 +125,8 @@ export const selectOperationListFormat = createSelector(
 export const selectOperationReplace = createSelector(
   selectOperation,
   (op) => op?.replace
+);
+export const selectOperationColor = createSelector(
+  selectOperation,
+  (op) => op?.color
 );
