@@ -2,16 +2,13 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  margin: 0 var(--space-sm);
+  margin-right: var(--space-sm);
 }
 
 i.pattern-input__color-indicator {
   display: block;
-  width: 2em;
-  height: 2em;
-  align-self: center;
-  border-radius: 50%;
-  border: var(--border);
+  width: 0.3em;
+  margin-right: var(--space-xs);
 }
 
 .pattern-input__input-group--match:not(:only-of-type) {
@@ -53,6 +50,7 @@ i.pattern-input__color-indicator {
 .pattern-input__regex input {
   display: inline;
   padding: 0;
+  width: 0;
   font-size: 1.5rem;
   border: none;
 }
