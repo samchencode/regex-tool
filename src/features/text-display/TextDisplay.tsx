@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import './style.css';
 
 enum TextDisplayType {
@@ -19,7 +19,12 @@ const TextDisplay = (props: TextDisplayProps) => {
     const overlay = overlayRef.current as unknown as HTMLDivElement;
     const textArea = textAreaRef.current as unknown as HTMLTextAreaElement;
     overlay.scrollTo(textArea.scrollLeft, textArea.scrollTop);
-  }
+  };
+
+  const [value, setValue] = useState(
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, nesciunt?' +
+      'A consequatur, porro at ex quod hic placeat non amet?'
+  );
 
   return (
     <div
@@ -32,9 +37,7 @@ const TextDisplay = (props: TextDisplayProps) => {
       <div className="text-display__content">
         {isInput && (
           <div className="text-display__highlight-overlay" ref={overlayRef}>
-            <mark>Lorem ipsum dolor</mark> sit amet consectetur adipisicing
-            elit. Quod, nesciunt? A consequatur, porro at <mark>ex quod</mark>{' '}
-            hic placeat non amet?
+            {value}
           </div>
         )}
         <textarea
@@ -43,9 +46,8 @@ const TextDisplay = (props: TextDisplayProps) => {
           placeholder="Input text to search..."
           readOnly={!isInput}
           onScroll={isInput ? handleScrollTextArea : undefined}
-          onChange={e => null}
-          value="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, nesciunt?
-          A consequatur, porro at ex quod hic placeat non amet?"
+          onChange={(e) => setValue(e.target.value)}
+          value={value}
         />
       </div>
       {/* TODO: make sure Output box isn't empty before displaying button */}
