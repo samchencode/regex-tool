@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import type { SplitStringRange } from '../../splitStringAtPairedIndicies';
 import '../../style.css';
 
@@ -10,27 +10,23 @@ enum TextDisplayType {
 interface TextDisplayProps {
   type: TextDisplayType;
   value: string;
+  placeholder?: string;
   onChange?: (newValue: string) => void;
-  highlightRanges?: SplitStringRange[];
-  highlightColor?: string;
+  onScroll?: () => void;
+  before?: React.ReactNode;
+  after?: React.ReactNode;
 }
 
-const TextDisplay = ({
+const TextDisplay = React.forwardRef<null, TextDisplayProps>(({
   type,
   value,
+  placeholder,
   onChange,
-  highlightRanges,
-  highlightColor,
-}: TextDisplayProps) => {
+  onScroll,
+  before,
+  after,
+}: TextDisplayProps, ref) => {
   const isInput = type === TextDisplayType.INPUT;
-  const overlayRef = useRef(null);
-  const textAreaRef = useRef(null);
-
-  const handleScrollTextArea = () => {
-    const overlay = overlayRef.current as unknown as HTMLDivElement;
-    const textArea = textAreaRef.current as unknown as HTMLTextAreaElement;
-    overlay.scrollTo(textArea.scrollLeft, textArea.scrollTop);
-  };
 
   return (
     <div
@@ -41,36 +37,21 @@ const TextDisplay = ({
     >
       <h3 className="text-display__label">{isInput ? 'Input' : 'Output'}</h3>
       <div className="text-display__content">
-        {isInput && (
-          <div className="text-display__highlight-overlay" ref={overlayRef}>
-            {highlightRanges &&
-              highlightRanges.map(({ inRange, value }, k) =>
-                inRange ? (
-                  <mark key={k} style={{ background: highlightColor }}>
-                    {value}
-                  </mark>
-                ) : (
-                  <span key={k}>{value}</span>
-                )
-              )}
-          </div>
-        )}
+        {before}
         <textarea
           className="text-display__top"
-          ref={textAreaRef}
-          placeholder="Input text to search..."
+          ref={ref}
+          placeholder={placeholder}
           readOnly={!isInput}
-          onScroll={isInput ? handleScrollTextArea : undefined}
+          onScroll={onScroll}
           onChange={onChange && ((e) => onChange(e.target.value))}
           value={value}
         />
       </div>
-      {!isInput && value !== '' && (
-        <button className="text-display__button--copy">Copy</button>
-      )}
+      {after}
     </div>
   );
-};
+});
 
 export default TextDisplay;
 export { TextDisplayType };
