@@ -14,11 +14,11 @@ const TextDisplayContainer = ({
   inputOnly = false,
 }: TextDisplayContainerProps) => {
 
-
+  const [input, setInput] = useState('Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, doloremque.');
 
   return (
     <div className="text-display__container">
-      <InputTextDisplay />
+      <InputTextDisplay value={input} onChange={setInput} />
       {!inputOnly && <OutputTextDisplay value={'Output Here'} />}
     </div>
   );
