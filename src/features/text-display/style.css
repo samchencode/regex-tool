@@ -53,17 +53,6 @@ textarea.text-display__top {
   border: var(--border-focus);
 }
 
-.text-display__highlight-overlay {
-  overflow: hidden;
-  color: transparent;
-  margin: 1px;
-}
-
-.text-display__highlight-overlay * {
-  color: transparent;
-  opacity: 0.5;
-}
-
 .text-display__button--copy {
   width: 100px;
   position: absolute;

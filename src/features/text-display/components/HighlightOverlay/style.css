@@ -1,0 +1,11 @@
+.text-display__highlight-overlay {
+  overflow: hidden;
+  color: transparent;
+  margin: 1px;
+  white-space: pre;
+}
+
+.text-display__highlight-overlay * {
+  color: transparent;
+  opacity: 0.5;
+}
