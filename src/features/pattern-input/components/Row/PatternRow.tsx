@@ -14,7 +14,7 @@ interface PatternRowProps {
   flags: string[];
   listFormat: string;
   replace: string;
-  color: string,
+  color: string;
   onClickRemove: () => void;
   onChangePattern: (pattern: string) => void;
   onChangeListFormat: (listFormat: string) => void;
@@ -38,10 +38,13 @@ const Pattern = ({
   const operationHandleChange = isListType
     ? onChangeListFormat
     : onChangeReplace;
-  
+
   return (
     <li className="pattern-input__row">
-      <i className="pattern-input__color-indicator" style={{'background': color}}></i>
+      <i
+        className="pattern-input__color-indicator"
+        style={{ background: color }}
+      ></i>
       <div className="pattern-input__input-group pattern-input__input-group--match">
         <label htmlFor="match-pattern-1">Regex Pattern</label>
         <div className="pattern-input__regex">
@@ -67,14 +70,17 @@ const Pattern = ({
               isListType ? '<List Formatting Here>' : '<Replace-With Here>'
             }
             value={operationValue}
-            onChange={e => operationHandleChange(e.target.value)}
+            onChange={(e) => operationHandleChange(e.target.value)}
           />
         </div>
       )}
-      <button className="button--transparent" onClick={e => {
-        e.preventDefault();
-        onClickRemove();
-      }}>
+      <button
+        className="button--transparent"
+        onClick={(e) => {
+          e.preventDefault();
+          onClickRemove();
+        }}
+      >
         <i className="fas fa-times"></i>
       </button>
     </li>

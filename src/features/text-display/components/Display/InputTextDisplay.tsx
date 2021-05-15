@@ -43,7 +43,13 @@ const InputTextDisplay = ({ value, onChange }: InputTextDisplayProps) => {
       ref={textareaRef}
       onChange={onChange}
       onScroll={handleScroll}
-      before={<HighlightOverlay ref={overlayRef} highlightRanges={highlightRanges} highlightColor={currentOp.color} />}
+      before={
+        <HighlightOverlay
+          ref={overlayRef}
+          highlightRanges={highlightRanges}
+          highlightColor={currentOp.color}
+        />
+      }
     />
   );
 };

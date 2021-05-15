@@ -10,7 +10,14 @@ const CopyButton = () => (
 );
 
 const OutputTextDisplay = ({ value }: OutputTextDisplayProps) => {
-  return <TextDisplay type={TextDisplayType.OUTPUT} value={value} after={value!== '' && <CopyButton />} placeholder="Results appear here."/>;
+  return (
+    <TextDisplay
+      type={TextDisplayType.OUTPUT}
+      value={value}
+      after={value !== '' && <CopyButton />}
+      placeholder="Results appear here."
+    />
+  );
 };
 
 export default OutputTextDisplay;
