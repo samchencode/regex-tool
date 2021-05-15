@@ -1,15 +1,18 @@
 import React from 'react';
 import { PatternRow, ButtonRow, PatternRowType } from './components/Row';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import {
+import { patternActions, patternSelectors } from '../pattern';
+import './style.css';
+
+const {
   add,
   remove,
   setPattern,
   setListFormat,
   setReplace,
-  selectOperations,
-} from './patternSlice';
-import './style.css';
+} = patternActions;
+
+const { selectOperations } = patternSelectors;
 
 interface PatternInputProps {
   type: PatternRowType;

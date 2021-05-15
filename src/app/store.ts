@@ -1,5 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import { patternReducer } from '../features/pattern-input';
+import { patternReducer } from '../features/pattern';
 
 export const store = configureStore({
   reducer: {

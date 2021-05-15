@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import TextDisplay, { TextDisplayType } from './TextDisplay';
 import * as regex from '../../../../lib/regex';
 import { useAppSelector } from '../../../../app/hooks';
-import { patternSelectors } from '../../../pattern-input';
+import { patternSelectors } from '../../../pattern';
 import split from '../../splitStringAtPairedIndicies';
 import HighlightOverlay from '../HighlightOverlay';
 

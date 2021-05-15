@@ -3,7 +3,7 @@ import { OutputTextDisplay, InputTextDisplay } from './components/Display';
 import './style.css';
 
 import { useAppSelector } from '../../app/hooks';
-import { patternSelectors } from '../pattern-input';
+import { patternSelectors } from '../pattern';
 import * as regex from '../../lib/regex';
 
 enum TextDisplayType {

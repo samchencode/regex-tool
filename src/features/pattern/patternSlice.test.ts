@@ -8,6 +8,8 @@ import reducer, {
   setFlags,
   setListFormat,
   setReplace,
+} from './patternSlice';
+import {
   selectOperations,
   selectOperationIds,
   selectOperation,
@@ -16,7 +18,7 @@ import reducer, {
   selectOperationListFormat,
   selectOperationReplace,
   selectOperationColor,
-} from './patternSlice';
+} from './patternSelectors';
 
 describe('pattern slice', () => {
   it('should return initial state after creation', () => {
@@ -49,7 +51,9 @@ describe('pattern slice', () => {
     expect(selectOperations(rootState)).toEqual(expected);
 
     const ids = selectOperationIds(rootState);
-    expect(selectOperationColor(rootState, ids[0])).not.toBe(selectOperationColor(rootState, ids[1]))
+    expect(selectOperationColor(rootState, ids[0])).not.toBe(
+      selectOperationColor(rootState, ids[1])
+    );
   });
 
   it('should remove operation at a given index', () => {
