@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import TextDisplay, { TextDisplayType } from './TextDisplay';
-import { useAppSelector } from '../../../../app/hooks';
-import { patternSelectors } from '../../../pattern-input';
-import split from '../../splitStringAtPairedIndicies';
 
 const InputTextDisplay = () => {
   const [value, setValue] = useState(
