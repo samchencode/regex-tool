@@ -5,10 +5,11 @@ function splitStringAtPairedIndicies(
   const result = [];
   let temp = 0;
   for (const [startIdx, endIdx] of indices) {
-    if(temp < startIdx) result.push({
-      value: str.slice(temp, startIdx),
-      inRange: false,
-    });
+    if (temp < startIdx)
+      result.push({
+        value: str.slice(temp, startIdx),
+        inRange: false,
+      });
     result.push({ value: str.slice(startIdx, endIdx), inRange: true });
     temp = endIdx;
   }
@@ -20,7 +21,7 @@ function splitStringAtPairedIndicies(
   return result;
 }
 
-type SplitStringRange = ReturnType<typeof splitStringAtPairedIndicies>[number]
+type SplitStringRange = ReturnType<typeof splitStringAtPairedIndicies>[number];
 
 export default splitStringAtPairedIndicies;
 export type { SplitStringRange };

@@ -15,7 +15,10 @@ describe('splitStringAtPairedIndicies', () => {
   });
 
   it('should not split string if it creates empty string', () => {
-    const res = split('Hello World', [[0,5], [5, 6]]);
+    const res = split('Hello World', [
+      [0, 5],
+      [5, 6],
+    ]);
 
     const expected = [
       {

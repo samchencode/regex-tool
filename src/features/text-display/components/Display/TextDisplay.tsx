@@ -15,7 +15,13 @@ interface TextDisplayProps {
   highlightColor?: string;
 }
 
-const TextDisplay = ({type, value, onChange, highlightRanges, highlightColor}: TextDisplayProps) => {
+const TextDisplay = ({
+  type,
+  value,
+  onChange,
+  highlightRanges,
+  highlightColor,
+}: TextDisplayProps) => {
   const isInput = type === TextDisplayType.INPUT;
   const overlayRef = useRef(null);
   const textAreaRef = useRef(null);
