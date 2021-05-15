@@ -6,6 +6,7 @@ import {
   setFlags,
   setListFormat,
   setReplace,
+  setInput,
 } from './patternSlice';
 
 export { default as patternReducer } from './patternSlice';
@@ -19,4 +20,5 @@ export const patternActions = {
   setFlags,
   setListFormat,
   setReplace,
+  setInput,
 };

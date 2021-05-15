@@ -27,3 +27,11 @@ export const selectOperationColor = createSelector(
   selectOperation,
   (op) => op?.color
 );
+
+export const selectTransform = (state: RootState, idx: number) =>
+  state.pattern.transforms[idx];
+
+export const selectTransformInput = createSelector(
+  selectTransform,
+  (tx) => tx.input
+);

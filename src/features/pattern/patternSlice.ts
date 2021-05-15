@@ -107,6 +107,13 @@ const patternSlice = createSlice({
       if (!op) return;
       op.replace = replace;
     },
+    setInput(state, action: PayloadAction<{idx: number, value: string}>) {
+      const { idx, value } = action.payload;
+      state.transforms[idx].input = value;
+      // TODO: recalculate all transforms in a loop, (make a fn for it) after every change in state. 
+      // If this gets too slow, maybe put it into web worker and launch via thunk. Also debounce?
+      // Could also memoize results...
+    }
   },
 });
 
@@ -118,6 +125,8 @@ export const {
   setFlags,
   setListFormat,
   setReplace,
+  setInput,
 } = patternSlice.actions;
 export { initialState, makeOperation };
 export default patternSlice.reducer;
+export type { PatternState };

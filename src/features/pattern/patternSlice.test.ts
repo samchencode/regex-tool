@@ -8,6 +8,7 @@ import reducer, {
   setFlags,
   setListFormat,
   setReplace,
+  setInput,
 } from './patternSlice';
 import {
   selectOperations,
@@ -18,6 +19,7 @@ import {
   selectOperationListFormat,
   selectOperationReplace,
   selectOperationColor,
+  selectTransformInput,
 } from './patternSelectors';
 
 describe('pattern slice', () => {
@@ -111,5 +113,14 @@ describe('pattern slice', () => {
     );
     const rootState = { pattern: newState };
     expect(selectOperationReplace(rootState, 1)).toBe('<< $& >>');
+  });
+
+  it('should set input string', () => {
+    const newState = reducer(
+      initialState,
+      setInput({ idx: 0, value: 'Hai' })
+    );
+    const rootState = { pattern: newState };
+    expect(selectTransformInput(rootState, 0)).toBe('Hai');
   });
 });
