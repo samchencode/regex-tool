@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TextDisplay, { TextDisplayType } from './TextDisplay';
 import * as regex from '../../../../lib/regex';
 import { useAppSelector } from '../../../../app/hooks';
@@ -11,7 +11,6 @@ interface InputTextDisplayProps {
 }
 
 const InputTextDisplay = ({ value, onChange }: InputTextDisplayProps) => {
-
   const ops = useAppSelector(patternSelectors.selectOperations);
 
   let matches: any[] = [];
