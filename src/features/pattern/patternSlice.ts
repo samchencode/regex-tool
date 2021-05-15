@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import * as regex from '../../lib/regex';
 
 interface Operation {
   id: number;
@@ -10,7 +11,16 @@ interface Operation {
   color: string;
 }
 
-type PatternState = Operation[];
+interface Transform {
+  input: string;
+  list: string;
+  replace: string;
+}
+
+type PatternState = {
+  operations: Operation[];
+  transforms: Transform[];
+};
 
 const defaultOperation: Operation = {
   id: 1,
@@ -21,7 +31,16 @@ const defaultOperation: Operation = {
   color: '#ffd700',
 };
 
-const initialState: PatternState = [defaultOperation];
+const defaultInput = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, doloremque.';
+
+const initialState: PatternState = {
+  operations: [defaultOperation],
+  transforms: [{
+    input: defaultInput,
+    list: regex.list(defaultOperation.pattern, defaultOperation.flags, defaultInput, defaultOperation.listFormat),
+    replace: regex.replace(defaultOperation.pattern, defaultOperation.flags, defaultInput, defaultOperation.replace),
+  }]
+};
 
 const randomColor = () =>
   '#' + Math.floor(Math.random() * 16777215).toString(16);
@@ -31,35 +50,35 @@ const makeOperation = (id: number) => ({
   color: randomColor(),
 });
 const findOperationById = (state: PatternState, id: number) =>
-  state.find((op) => op.id === id);
+  state.operations.find((op) => op.id === id);
 
 const patternSlice = createSlice({
   name: 'pattern',
   initialState,
   reducers: {
     add(state) {
-      const id = state.length + 1;
-      state.push(makeOperation(id));
+      const id = state.operations.length + 1;
+      state.operations.push(makeOperation(id));
     },
     remove(state, action: PayloadAction<{ id: number }>) {
       const { id } = action.payload;
-      return state.filter((op) => op.id !== id);
+      state.operations = state.operations.filter((op) => op.id !== id);
     },
     move(state, action: PayloadAction<{ id: number; toIdx: number }>) {
       const { id, toIdx } = action.payload;
       const op = findOperationById(state, id);
 
-      if (toIdx > state.length - 1 || toIdx < 0)
+      if (toIdx > state.operations.length - 1 || toIdx < 0)
         throw Error('move out of bounds');
 
       if (!op) return;
 
-      const fromIdx = state.indexOf(op);
+      const fromIdx = state.operations.indexOf(op);
 
       if (toIdx === fromIdx) return;
 
-      state.splice(fromIdx, 1);
-      state.splice(toIdx, 0, op);
+      state.operations.splice(fromIdx, 1);
+      state.operations.splice(toIdx, 0, op);
     },
     setPattern(state, action: PayloadAction<{ id: number; pattern: string }>) {
       const { id, pattern } = action.payload;

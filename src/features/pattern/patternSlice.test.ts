@@ -57,7 +57,7 @@ describe('pattern slice', () => {
   });
 
   it('should remove operation at a given index', () => {
-    const initialState = [makeOperation(1), makeOperation(2)];
+    const initialState = {operations:[makeOperation(1), makeOperation(2)], transforms:[]};
 
     const newState = reducer(initialState, remove({ id: 1 }));
     const rootState = { pattern: newState };
@@ -67,7 +67,7 @@ describe('pattern slice', () => {
   });
 
   it('should move operation from one index to another', () => {
-    const initialState = [makeOperation(1), makeOperation(2), makeOperation(3)];
+    const initialState = {operations:[makeOperation(1), makeOperation(2),  makeOperation(3)], transforms:[]};
     const newState = reducer(initialState, move({ id: 2, toIdx: 0 }));
     const rootState = { pattern: newState };
     expect(selectOperations(rootState).findIndex((op) => op.id === 2)).toBe(0);
