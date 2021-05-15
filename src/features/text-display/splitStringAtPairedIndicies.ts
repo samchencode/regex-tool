@@ -20,4 +20,7 @@ function splitStringAtPairedIndicies(
   return result;
 }
 
+type SplitStringRange = ReturnType<typeof splitStringAtPairedIndicies>[number]
+
 export default splitStringAtPairedIndicies;
+export type { SplitStringRange };

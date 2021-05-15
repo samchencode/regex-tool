@@ -1,9 +1,6 @@
-import React, { useRef, useState } from 'react';
-import { useAppSelector } from '../../app/hooks';
-import { patternSelectors } from '../pattern-input';
-import * as regex from '../../lib/regex';
-import split from './splitStringAtPairedIndicies';
-import './style.css';
+import React, { useRef } from 'react';
+import type { SplitStringRange } from '../../splitStringAtPairedIndicies';
+import '../style.css';
 
 enum TextDisplayType {
   INPUT,
@@ -12,10 +9,14 @@ enum TextDisplayType {
 
 interface TextDisplayProps {
   type: TextDisplayType;
+  value: string;
+  onChange: (newValue: string) => void;
+  highlightRanges?: SplitStringRange[];
+  highlightColor?: string;
 }
 
-const TextDisplay = (props: TextDisplayProps) => {
-  const isInput = props.type === TextDisplayType.INPUT;
+const TextDisplay = ({type, value, onChange, highlightRanges, highlightColor}: TextDisplayProps) => {
+  const isInput = type === TextDisplayType.INPUT;
   const overlayRef = useRef(null);
   const textAreaRef = useRef(null);
 
@@ -24,20 +25,6 @@ const TextDisplay = (props: TextDisplayProps) => {
     const textArea = textAreaRef.current as unknown as HTMLTextAreaElement;
     overlay.scrollTo(textArea.scrollLeft, textArea.scrollTop);
   };
-
-  const [value, setValue] = useState(
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, nesciunt?' +
-      'A consequatur, porro at ex quod hic placeat non amet?'
-  );
-
-  const ops = useAppSelector(patternSelectors.selectOperations);
-
-  let matches: any[] = [];
-  try {
-    matches = regex.match(ops[0].pattern, ops[0].flags, value);
-  } catch (e) {
-    matches = [];
-  }
 
   return (
     <div
@@ -50,13 +37,10 @@ const TextDisplay = (props: TextDisplayProps) => {
       <div className="text-display__content">
         {isInput && (
           <div className="text-display__highlight-overlay" ref={overlayRef}>
-            {matches.length > 0 &&
-              split(
-                value,
-                matches.map((m) => [m.startIdx, m.endIdx])
-              ).map(({ inRange, value }, k) =>
+            {highlightRanges &&
+              highlightRanges.map(({ inRange, value }, k) =>
                 inRange ? (
-                  <mark key={k} style={{ background: ops[0].color }}>
+                  <mark key={k} style={{ background: highlightColor }}>
                     {value}
                   </mark>
                 ) : (
@@ -71,7 +55,7 @@ const TextDisplay = (props: TextDisplayProps) => {
           placeholder="Input text to search..."
           readOnly={!isInput}
           onScroll={isInput ? handleScrollTextArea : undefined}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => onChange(e.target.value)}
           value={value}
         />
       </div>

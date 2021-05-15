@@ -1,5 +1,5 @@
 import React from 'react';
-import TextDisplay, { TextDisplayType } from './TextDisplay';
+import { OutputTextDisplay, InputTextDisplay } from './components/Display';
 import './style.css';
 
 interface TextDisplayContainerProps {
@@ -8,8 +8,8 @@ interface TextDisplayContainerProps {
 
 const TextDisplayContainer = ({ inputOnly = false }: TextDisplayContainerProps) => (
   <div className="text-display__container">
-    <TextDisplay type={TextDisplayType.INPUT} />
-    {!inputOnly && <TextDisplay type={TextDisplayType.OUTPUT} />}
+    <InputTextDisplay />
+    {!inputOnly && <OutputTextDisplay />}
   </div>
 );
 
