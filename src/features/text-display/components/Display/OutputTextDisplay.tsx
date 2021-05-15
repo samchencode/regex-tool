@@ -3,15 +3,14 @@ import TextDisplay, { TextDisplayType } from './TextDisplay';
 
 const InputTextDisplay = () => {
   const [value, setValue] = useState(
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, nesciunt?' +
-      'A consequatur, porro at ex quod hic placeat non amet?'
+    'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur, commodi?'
   );
 
   // const ops = useAppSelector(patternSelectors.selectOperations);
 
   return (
     <TextDisplay
-      type={TextDisplayType.INPUT}
+      type={TextDisplayType.OUTPUT}
       value={value}
       onChange={setValue}
     />
