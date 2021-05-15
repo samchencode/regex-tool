@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TextDisplay, { TextDisplayType } from './TextDisplay';
 
-const OutputTextDisplay = () => {
-  const [value, setValue] = useState(
-    'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur, commodi?'
-  );
+interface OutputTextDisplayProps {
+  value: string
+}
 
-  // const ops = useAppSelector(patternSelectors.selectOperations);
+const OutputTextDisplay = ({ value }: OutputTextDisplayProps) => {
 
   return (
     <TextDisplay
       type={TextDisplayType.OUTPUT}
       value={value}
-      onChange={setValue}
     />
   );
 };

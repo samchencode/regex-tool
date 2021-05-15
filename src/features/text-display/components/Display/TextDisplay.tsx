@@ -10,7 +10,7 @@ enum TextDisplayType {
 interface TextDisplayProps {
   type: TextDisplayType;
   value: string;
-  onChange: (newValue: string) => void;
+  onChange?: (newValue: string) => void;
   highlightRanges?: SplitStringRange[];
   highlightColor?: string;
 }
@@ -61,7 +61,7 @@ const TextDisplay = ({
           placeholder="Input text to search..."
           readOnly={!isInput}
           onScroll={isInput ? handleScrollTextArea : undefined}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={onChange && ((e) => onChange(e.target.value))}
           value={value}
         />
       </div>
