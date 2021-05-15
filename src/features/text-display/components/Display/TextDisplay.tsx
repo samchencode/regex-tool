@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import type { SplitStringRange } from '../../splitStringAtPairedIndicies';
-import '../style.css';
+import '../../style.css';
 
 enum TextDisplayType {
   INPUT,
