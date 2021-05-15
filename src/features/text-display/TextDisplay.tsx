@@ -66,8 +66,7 @@ const TextDisplay = (props: TextDisplayProps) => {
           value={value}
         />
       </div>
-      {/* TODO: make sure Output box isn't empty before displaying button */}
-      {!isInput && <button className="text-display__button--copy">Copy</button>}
+      {!isInput && value !== '' && <button className="text-display__button--copy">Copy</button>}
     </div>
   );
 };
