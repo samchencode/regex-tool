@@ -50,10 +50,19 @@ const TextDisplay = (props: TextDisplayProps) => {
       <div className="text-display__content">
         {isInput && (
           <div className="text-display__highlight-overlay" ref={overlayRef}>
-            { matches.length > 0 && split(value, matches.map(m => [m.startIdx, m.endIdx])).map(({inRange, value}, k) => inRange 
-            ? <mark key={k} style={{background: ops[0].color}}>{value}</mark>
-            : <span key={k}>{value}</span>) 
-            }
+            {matches.length > 0 &&
+              split(
+                value,
+                matches.map((m) => [m.startIdx, m.endIdx])
+              ).map(({ inRange, value }, k) =>
+                inRange ? (
+                  <mark key={k} style={{ background: ops[0].color }}>
+                    {value}
+                  </mark>
+                ) : (
+                  <span key={k}>{value}</span>
+                )
+              )}
           </div>
         )}
         <textarea
@@ -66,7 +75,9 @@ const TextDisplay = (props: TextDisplayProps) => {
           value={value}
         />
       </div>
-      {!isInput && value !== '' && <button className="text-display__button--copy">Copy</button>}
+      {!isInput && value !== '' && (
+        <button className="text-display__button--copy">Copy</button>
+      )}
     </div>
   );
 };
