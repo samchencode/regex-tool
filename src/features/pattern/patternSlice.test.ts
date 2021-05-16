@@ -59,7 +59,8 @@ describe('pattern slice', () => {
   });
 
   it('should remove operation at a given index', () => {
-    const state = {...initialState, 
+    const state = {
+      ...initialState,
       operations: [makeOperation(1), makeOperation(2)],
     };
 
@@ -71,7 +72,8 @@ describe('pattern slice', () => {
   });
 
   it('should move operation from one index to another', () => {
-    const state = {...initialState,
+    const state = {
+      ...initialState,
       operations: [makeOperation(1), makeOperation(2), makeOperation(3)],
     };
     const newState = reducer(state, move({ id: 2, toIdx: 0 }));

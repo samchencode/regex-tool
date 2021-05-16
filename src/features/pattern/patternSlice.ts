@@ -25,7 +25,8 @@ const defaultOperation: Operation = {
   color: '#ffd700',
 };
 
-const defaultInput = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, doloremque.';
+const defaultInput =
+  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, doloremque.';
 
 const initialState: PatternState = {
   operations: [defaultOperation],
@@ -98,12 +99,12 @@ const patternSlice = createSlice({
       if (!op) return;
       op.replace = replace;
     },
-    setInput(state, action: PayloadAction<{value: string}>) {
+    setInput(state, action: PayloadAction<{ value: string }>) {
       state.input = action.payload.value;
     },
-    setFocus(state, action: PayloadAction<{idx: number}>) {
+    setFocus(state, action: PayloadAction<{ idx: number }>) {
       state.focus = action.payload.idx;
-    }
+    },
   },
 });
 
