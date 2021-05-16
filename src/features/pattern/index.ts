@@ -7,6 +7,7 @@ import {
   setListFormat,
   setReplace,
   setInput,
+  setFocus
 } from './patternSlice';
 
 export { default as patternReducer } from './patternSlice';
@@ -21,6 +22,7 @@ export const patternActions = {
   setListFormat,
   setReplace,
   setInput,
+  setFocus,
 };
 
 export { default as transform } from './transform';
