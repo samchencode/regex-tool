@@ -1,6 +1,3 @@
-import * as regex from '../../lib/regex';
-import type { PatternState } from './patternSlice';
-
 interface TransformParameters {
   input: string;
   transforms: Array<{
