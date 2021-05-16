@@ -45,10 +45,9 @@ const Pattern = ({
 
   return (
     <li
-      className={`pattern-input__row ${
-        focus ? 'pattern-input__row--focus' : ''
-      }`}
+      className="pattern-input__row"
       onClick={onClick}
+      style={{...(focus && {boxShadow: `inset 0 0 0px 2px ${color}`})}}
     >
       <i
         className="pattern-input__color-indicator"
