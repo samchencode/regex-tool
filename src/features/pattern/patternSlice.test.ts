@@ -59,12 +59,11 @@ describe('pattern slice', () => {
   });
 
   it('should remove operation at a given index', () => {
-    const initialState = {
+    const state = {...initialState, 
       operations: [makeOperation(1), makeOperation(2)],
-      input: '',
     };
 
-    const newState = reducer(initialState, remove({ id: 1 }));
+    const newState = reducer(state, remove({ id: 1 }));
     const rootState = { pattern: newState };
 
     expect(selectOperation(rootState, 2)).toEqual(expect.any(Object));
@@ -72,15 +71,14 @@ describe('pattern slice', () => {
   });
 
   it('should move operation from one index to another', () => {
-    const initialState = {
+    const state = {...initialState,
       operations: [makeOperation(1), makeOperation(2), makeOperation(3)],
-      input: '',
     };
-    const newState = reducer(initialState, move({ id: 2, toIdx: 0 }));
+    const newState = reducer(state, move({ id: 2, toIdx: 0 }));
     const rootState = { pattern: newState };
     expect(selectOperations(rootState).findIndex((op) => op.id === 2)).toBe(0);
 
-    const newState2 = reducer(initialState, move({ id: 2, toIdx: 2 }));
+    const newState2 = reducer(state, move({ id: 2, toIdx: 2 }));
     const rootState2 = { pattern: newState2 };
     expect(selectOperations(rootState2).findIndex((op) => op.id === 2)).toBe(2);
   });

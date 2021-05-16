@@ -13,6 +13,7 @@ interface Operation {
 type PatternState = {
   operations: Operation[];
   input: string;
+  focus: number;
 };
 
 const defaultOperation: Operation = {
@@ -29,6 +30,7 @@ const defaultInput = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A
 const initialState: PatternState = {
   operations: [defaultOperation],
   input: defaultInput,
+  focus: -1,
 };
 
 const randomColor = () =>
@@ -98,6 +100,9 @@ const patternSlice = createSlice({
     },
     setInput(state, action: PayloadAction<{value: string}>) {
       state.input = action.payload.value;
+    },
+    setFocus(state, action: PayloadAction<{idx: number}>) {
+      state.focus = action.payload.idx;
     }
   },
 });
