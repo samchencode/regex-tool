@@ -22,3 +22,5 @@ export const patternActions = {
   setReplace,
   setInput,
 };
+
+export { default as transform } from './transform';
