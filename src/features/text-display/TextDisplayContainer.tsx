@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { OutputTextDisplay, InputTextDisplay } from './components/Display';
 import './style.css';
 
-import { useAppSelector } from '../../app/hooks';
-import { patternSelectors } from '../pattern';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { patternSelectors, patternActions } from '../pattern';
 import * as regex from '../../lib/regex';
+
+const { selectOperations, selectInput } = patternSelectors;
+const { setInput } = patternActions;
 
 enum TextDisplayType {
   LIST,
@@ -17,13 +20,11 @@ interface TextDisplayContainerProps {
 }
 
 const TextDisplayContainer = ({ type }: TextDisplayContainerProps) => {
-  const [input, setInput] = useState(
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, doloremque.'
-  );
+  const dispatch = useAppDispatch();
 
-  const { pattern, flags, listFormat, replace } = useAppSelector(
-    patternSelectors.selectOperations
-  )[0];
+  const input = useAppSelector(selectInput);
+  const { pattern, flags, listFormat, replace } =
+    useAppSelector(selectOperations)[0];
   const format = type === TextDisplayType.LIST ? listFormat : replace;
   const formatter = type === TextDisplayType.LIST ? regex.list : regex.replace;
 
@@ -36,7 +37,7 @@ const TextDisplayContainer = ({ type }: TextDisplayContainerProps) => {
 
   return (
     <div className="text-display__container">
-      <InputTextDisplay value={input} onChange={setInput} />
+      <InputTextDisplay value={input} onChange={(v) => dispatch(setInput({value: v}))} />
       {type !== TextDisplayType.INPUT_ONLY && (
         <OutputTextDisplay value={result} />
       )}
