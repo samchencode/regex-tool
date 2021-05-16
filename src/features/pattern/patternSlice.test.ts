@@ -19,7 +19,7 @@ import {
   selectOperationListFormat,
   selectOperationReplace,
   selectOperationColor,
-  selectTransformInput,
+  selectInput,
 } from './patternSelectors';
 
 describe('pattern slice', () => {
@@ -59,7 +59,10 @@ describe('pattern slice', () => {
   });
 
   it('should remove operation at a given index', () => {
-    const initialState = {operations:[makeOperation(1), makeOperation(2)], transforms:[]};
+    const initialState = {
+      operations: [makeOperation(1), makeOperation(2)],
+      input: '',
+    };
 
     const newState = reducer(initialState, remove({ id: 1 }));
     const rootState = { pattern: newState };
@@ -69,7 +72,10 @@ describe('pattern slice', () => {
   });
 
   it('should move operation from one index to another', () => {
-    const initialState = {operations:[makeOperation(1), makeOperation(2),  makeOperation(3)], transforms:[]};
+    const initialState = {
+      operations: [makeOperation(1), makeOperation(2), makeOperation(3)],
+      input: '',
+    };
     const newState = reducer(initialState, move({ id: 2, toIdx: 0 }));
     const rootState = { pattern: newState };
     expect(selectOperations(rootState).findIndex((op) => op.id === 2)).toBe(0);
@@ -116,11 +122,8 @@ describe('pattern slice', () => {
   });
 
   it('should set input string', () => {
-    const newState = reducer(
-      initialState,
-      setInput({ idx: 0, value: 'Hai' })
-    );
+    const newState = reducer(initialState, setInput({ value: 'Hai' }));
     const rootState = { pattern: newState };
-    expect(selectTransformInput(rootState, 0)).toBe('Hai');
+    expect(selectInput(rootState)).toBe('Hai');
   });
 });

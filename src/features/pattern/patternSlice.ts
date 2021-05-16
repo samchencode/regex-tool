@@ -19,7 +19,7 @@ interface Transform {
 
 type PatternState = {
   operations: Operation[];
-  transforms: Transform[];
+  input: string;
 };
 
 const defaultOperation: Operation = {
@@ -35,11 +35,7 @@ const defaultInput = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A
 
 const initialState: PatternState = {
   operations: [defaultOperation],
-  transforms: [{
-    input: defaultInput,
-    list: regex.list(defaultOperation.pattern, defaultOperation.flags, defaultInput, defaultOperation.listFormat),
-    replace: regex.replace(defaultOperation.pattern, defaultOperation.flags, defaultInput, defaultOperation.replace),
-  }]
+  input: defaultInput,
 };
 
 const randomColor = () =>
@@ -107,12 +103,8 @@ const patternSlice = createSlice({
       if (!op) return;
       op.replace = replace;
     },
-    setInput(state, action: PayloadAction<{idx: number, value: string}>) {
-      const { idx, value } = action.payload;
-      state.transforms[idx].input = value;
-      // TODO: recalculate all transforms in a loop, (make a fn for it) after every change in state. 
-      // If this gets too slow, maybe put it into web worker and launch via thunk. Also debounce?
-      // Could also memoize results...
+    setInput(state, action: PayloadAction<{value: string}>) {
+      state.input = action.payload.value;
     }
   },
 });
