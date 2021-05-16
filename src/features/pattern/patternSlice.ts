@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import randomColor from './randomColor';
 
 interface Operation {
   id: number;
@@ -34,8 +35,6 @@ const initialState: PatternState = {
   focus: 0,
 };
 
-const randomColor = () =>
-  '#' + Math.floor(Math.random() * 16777215).toString(16);
 const makeOperation = (id: number) => ({
   ...defaultOperation,
   id,
