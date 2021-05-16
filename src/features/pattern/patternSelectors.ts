@@ -29,3 +29,4 @@ export const selectOperationColor = createSelector(
 );
 
 export const selectInput = (state: RootState) => state.pattern.input;
+export const selectFocus = (state: RootState) => state.pattern.focus;

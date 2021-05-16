@@ -117,6 +117,7 @@ export const {
   setListFormat,
   setReplace,
   setInput,
+  setFocus,
 } = patternSlice.actions;
 export { initialState, makeOperation };
 export default patternSlice.reducer;

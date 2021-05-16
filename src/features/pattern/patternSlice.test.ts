@@ -9,6 +9,7 @@ import reducer, {
   setListFormat,
   setReplace,
   setInput,
+  setFocus,
 } from './patternSlice';
 import {
   selectOperations,
@@ -20,6 +21,7 @@ import {
   selectOperationReplace,
   selectOperationColor,
   selectInput,
+  selectFocus,
 } from './patternSelectors';
 
 describe('pattern slice', () => {
@@ -125,5 +127,11 @@ describe('pattern slice', () => {
     const newState = reducer(initialState, setInput({ value: 'Hai' }));
     const rootState = { pattern: newState };
     expect(selectInput(rootState)).toBe('Hai');
+  });
+
+  it('should set focus index', () => {
+    const newState = reducer(initialState, setFocus({ idx: 0 }));
+    const rootState = { pattern: newState };
+    expect(selectFocus(rootState)).toBe(0);
   });
 });
