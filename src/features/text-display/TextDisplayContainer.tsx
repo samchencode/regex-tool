@@ -6,7 +6,7 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { patternSelectors, patternActions, transform } from '../pattern';
 import * as regex from '../../lib/regex';
 
-const { selectOperations, selectInput } = patternSelectors;
+const { selectOperations, selectInput, selectFocus } = patternSelectors;
 const { setInput } = patternActions;
 
 enum TextDisplayType {
@@ -21,27 +21,40 @@ interface TextDisplayContainerProps {
 
 const TextDisplayContainer = ({ type }: TextDisplayContainerProps) => {
   const dispatch = useAppDispatch();
+  const isListMode = type === TextDisplayType.LIST;
 
   const input = useAppSelector(selectInput);
+  const focusIdx = useAppSelector(selectFocus);
 
   const ops = useAppSelector(selectOperations);
+
   const results = transform({
     input,
     transforms: ops.map((op) => ({
-      formatter: type === TextDisplayType.LIST ? regex.list : regex.replace,
+      formatter: isListMode ? regex.list : regex.replace,
       pattern: op.pattern,
       flags: op.flags,
-      format: type === TextDisplayType.LIST ? op.listFormat : op.replace,
+      format: isListMode ? op.listFormat : op.replace,
     })),
   });
 
   const output = results[results.length - 1]?.result ?? input;
 
+  const focusOp = ops[focusIdx];
+
+  const inputValue = [-1, 0].includes(focusIdx) 
+  ? input
+  : results[focusIdx - 1].result;
+
   return (
     <div className="text-display__container">
       <InputTextDisplay
-        value={input}
+        value={inputValue}
         onChange={(v) => dispatch(setInput({ value: v }))}
+        pattern={focusOp?.pattern}
+        flags={focusOp?.flags}
+        color={focusOp?.color}
+        readOnly={![-1, 0].includes(focusIdx)}
       />
       {type !== TextDisplayType.INPUT_ONLY && (
         <OutputTextDisplay value={output} />

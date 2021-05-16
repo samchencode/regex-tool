@@ -1,22 +1,23 @@
 import React, { useRef } from 'react';
 import TextDisplay, { TextDisplayType } from './TextDisplay';
 import * as regex from '../../../../lib/regex';
-import { useAppSelector } from '../../../../app/hooks';
-import { patternSelectors } from '../../../pattern';
 import split from '../../splitStringAtPairedIndicies';
 import HighlightOverlay from '../HighlightOverlay';
 
 interface InputTextDisplayProps {
   value: string;
+  pattern: string;
+  flags: string[];
+  color: string;
+  readOnly: boolean;
   onChange: (str: string) => void;
 }
 
-const InputTextDisplay = ({ value, onChange }: InputTextDisplayProps) => {
-  const currentOp = useAppSelector(patternSelectors.selectOperations)[0];
+const InputTextDisplay = ({ value, pattern, flags, color, onChange, readOnly }: InputTextDisplayProps) => {
 
   let matches: any[] = [];
   try {
-    matches = regex.match(currentOp.pattern, currentOp.flags, value);
+    matches = regex.match(pattern, flags, value);
   } catch (e) {
     matches = [];
   }
@@ -43,11 +44,12 @@ const InputTextDisplay = ({ value, onChange }: InputTextDisplayProps) => {
       ref={textareaRef}
       onChange={onChange}
       onScroll={handleScroll}
+      readOnly={readOnly}
       before={
         <HighlightOverlay
           ref={overlayRef}
           highlightRanges={highlightRanges}
-          highlightColor={currentOp.color}
+          highlightColor={color ?? '#FFFFFF'}
         />
       }
     />

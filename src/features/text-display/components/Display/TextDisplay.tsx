@@ -14,6 +14,7 @@ interface TextDisplayProps {
   onScroll?: () => void;
   before?: React.ReactNode;
   after?: React.ReactNode;
+  readOnly?: boolean
 }
 
 const TextDisplay = React.forwardRef<null, TextDisplayProps>(
@@ -26,6 +27,7 @@ const TextDisplay = React.forwardRef<null, TextDisplayProps>(
       onScroll,
       before,
       after,
+      readOnly,
     }: TextDisplayProps,
     ref
   ) => {
@@ -45,7 +47,7 @@ const TextDisplay = React.forwardRef<null, TextDisplayProps>(
             className="text-display__top"
             ref={ref}
             placeholder={placeholder}
-            readOnly={!isInput}
+            readOnly={!isInput || readOnly}
             onScroll={onScroll}
             onChange={onChange && ((e) => onChange(e.target.value))}
             value={value}
