@@ -10,9 +10,10 @@ const {
   setPattern,
   setListFormat,
   setReplace,
+  setFocus,
 } = patternActions;
 
-const { selectOperations } = patternSelectors;
+const { selectOperations, selectFocus } = patternSelectors;
 
 interface PatternInputProps {
   type: PatternRowType;
@@ -22,10 +23,12 @@ const PatternInput = ({ type }: PatternInputProps) => {
   const rows = useAppSelector(selectOperations);
   const dispatch = useAppDispatch();
 
+  const focusIdx = useAppSelector(selectFocus);
+
   return (
     <form className="pattern-input">
       <ul className="pattern-input__list">
-        {rows.map(({ id, pattern, flags, listFormat, replace, color }) => (
+        {rows.map(({ id, pattern, flags, listFormat, replace, color }, idx) => (
           <PatternRow
             key={id}
             type={type}
@@ -34,6 +37,8 @@ const PatternInput = ({ type }: PatternInputProps) => {
             listFormat={listFormat}
             replace={replace}
             color={color}
+            focus={focusIdx === idx}
+            onClick={() => dispatch(setFocus({ idx }))}
             onClickRemove={() => dispatch(remove({ id }))}
             onChangePattern={(pattern: string) => dispatch(setPattern({ id, pattern }))}
             onChangeListFormat={(listFormat: string) => dispatch(setListFormat({ id, listFormat }))}

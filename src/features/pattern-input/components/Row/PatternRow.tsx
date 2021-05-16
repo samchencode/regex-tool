@@ -15,6 +15,8 @@ interface PatternRowProps {
   listFormat: string;
   replace: string;
   color: string;
+  focus: boolean;
+  onClick: () => void;
   onClickRemove: () => void;
   onChangePattern: (pattern: string) => void;
   onChangeListFormat: (listFormat: string) => void;
@@ -28,6 +30,8 @@ const Pattern = ({
   listFormat,
   replace,
   color,
+  focus,
+  onClick,
   onClickRemove,
   onChangePattern,
   onChangeListFormat,
@@ -40,7 +44,12 @@ const Pattern = ({
     : onChangeReplace;
 
   return (
-    <li className="pattern-input__row">
+    <li
+      className={`pattern-input__row ${
+        focus ? 'pattern-input__row--focus' : ''
+      }`}
+      onClick={onClick}
+    >
       <i
         className="pattern-input__color-indicator"
         style={{ background: color }}

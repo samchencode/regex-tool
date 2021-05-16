@@ -6,6 +6,10 @@
   margin-bottom: 1em;
 }
 
+.pattern-input__row--focus {
+  box-shadow: inset 0 0 0px 2px var(--accent);
+}
+
 .pattern-input__row--full {
   border: none;
   padding: 0;
