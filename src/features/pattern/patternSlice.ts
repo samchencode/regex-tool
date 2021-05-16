@@ -31,7 +31,7 @@ const defaultInput =
 const initialState: PatternState = {
   operations: [defaultOperation],
   input: defaultInput,
-  focus: -1,
+  focus: 0,
 };
 
 const randomColor = () =>
@@ -50,11 +50,21 @@ const patternSlice = createSlice({
   reducers: {
     add(state) {
       const id = state.operations.length + 1;
-      state.operations.push(makeOperation(id));
+      const newOperation = makeOperation(id);
+      state.operations.push(newOperation);
+      state.focus = state.operations.length - 1;
     },
     remove(state, action: PayloadAction<{ id: number }>) {
       const { id } = action.payload;
-      state.operations = state.operations.filter((op) => op.id !== id);
+      const idx = state.operations.findIndex((op) => op.id === id);
+      if (
+        idx === state.operations.length - 1 &&
+        state.focus === state.operations.length - 1
+      ) {
+        state.focus--;
+      }
+
+      state.operations.splice(idx, 1);
     },
     move(state, action: PayloadAction<{ id: number; toIdx: number }>) {
       const { id, toIdx } = action.payload;
@@ -71,6 +81,8 @@ const patternSlice = createSlice({
 
       state.operations.splice(fromIdx, 1);
       state.operations.splice(toIdx, 0, op);
+
+      state.focus = toIdx;
     },
     setPattern(state, action: PayloadAction<{ id: number; pattern: string }>) {
       const { id, pattern } = action.payload;

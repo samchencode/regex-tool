@@ -43,6 +43,13 @@ describe('pattern slice', () => {
     expect(selectOperations(rootState)).toEqual(expected);
   });
 
+  it('should set focus after adding', () => {
+    const newState = reducer(initialState, add());
+    const rootState = { pattern: newState };
+
+    expect(selectFocus(rootState)).toEqual(1);
+  });
+
   it('should add new operation with random color', () => {
     const expected = expect.arrayContaining([
       expect.objectContaining({ color: expect.any(String) }),
@@ -72,6 +79,30 @@ describe('pattern slice', () => {
     expect(selectOperation(rootState, 2)).toEqual(expect.any(Object));
     expect(selectOperation(rootState, 1)).toBeUndefined();
   });
+
+  it('should set focus after removing last item in sequence', () => {
+    const state = {
+      ...initialState,
+      operations: [makeOperation(1), makeOperation(2)],
+    };
+
+    const newState = reducer(state, remove({ id: 2 }));
+    const rootState = { pattern: newState };
+
+    expect(selectFocus(rootState)).toEqual(0);
+  })
+
+  it('should set focus to -1 after removing final item', () => {
+    const state = {
+      ...initialState,
+      operations: [makeOperation(1)],
+    };
+
+    const newState = reducer(state, remove({ id: 1 }));
+    const rootState = { pattern: newState };
+
+    expect(selectFocus(rootState)).toEqual(-1);
+  })
 
   it('should move operation from one index to another', () => {
     const state = {
