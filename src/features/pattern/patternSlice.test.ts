@@ -90,7 +90,7 @@ describe('pattern slice', () => {
     const rootState = { pattern: newState };
 
     expect(selectFocus(rootState)).toEqual(0);
-  })
+  });
 
   it('should set focus to -1 after removing final item', () => {
     const state = {
@@ -102,7 +102,7 @@ describe('pattern slice', () => {
     const rootState = { pattern: newState };
 
     expect(selectFocus(rootState)).toEqual(-1);
-  })
+  });
 
   it('should move operation from one index to another', () => {
     const state = {
