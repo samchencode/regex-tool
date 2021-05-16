@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import * as regex from '../../lib/regex';
 
 interface Operation {
   id: number;
@@ -9,12 +8,6 @@ interface Operation {
   listFormat: string;
   replace: string;
   color: string;
-}
-
-interface Transform {
-  input: string;
-  list: string;
-  replace: string;
 }
 
 type PatternState = {
