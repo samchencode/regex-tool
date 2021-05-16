@@ -4,14 +4,8 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { patternActions, patternSelectors } from '../pattern';
 import './style.css';
 
-const {
-  add,
-  remove,
-  setPattern,
-  setListFormat,
-  setReplace,
-  setFocus,
-} = patternActions;
+const { add, remove, setPattern, setListFormat, setReplace, setFocus } =
+  patternActions;
 
 const { selectOperations, selectFocus } = patternSelectors;
 
@@ -40,9 +34,15 @@ const PatternInput = ({ type }: PatternInputProps) => {
             focus={focusIdx === idx}
             onClick={() => dispatch(setFocus({ idx }))}
             onClickRemove={() => dispatch(remove({ id }))}
-            onChangePattern={(pattern: string) => dispatch(setPattern({ id, pattern }))}
-            onChangeListFormat={(listFormat: string) => dispatch(setListFormat({ id, listFormat }))}
-            onChangeReplace={(replace: string) => dispatch(setReplace({ id, replace }))}
+            onChangePattern={(pattern: string) =>
+              dispatch(setPattern({ id, pattern }))
+            }
+            onChangeListFormat={(listFormat: string) =>
+              dispatch(setListFormat({ id, listFormat }))
+            }
+            onChangeReplace={(replace: string) =>
+              dispatch(setReplace({ id, replace }))
+            }
           />
         ))}
         <ButtonRow onClick={() => dispatch(add())} />
