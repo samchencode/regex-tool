@@ -5,7 +5,7 @@ export const selectOperations = (state: RootState) => state.pattern.operations;
 export const selectOperationIds = createSelector(selectOperations, (state) =>
   state.map((op) => op.id)
 );
-export const selectOperation = (state: RootState, id: number) =>
+export const selectOperation = (state: RootState, id: number | string) =>
   state.pattern.operations.find((op) => op.id === id);
 export const selectOperationPattern = createSelector(
   selectOperation,
