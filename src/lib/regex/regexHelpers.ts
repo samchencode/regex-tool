@@ -5,8 +5,18 @@ interface MatchResult {
   match: string[];
 }
 
+const unescapeString = (str: string) =>
+str
+  .replace(/\\b/g, "\b")
+  .replace(/\\f/g, "\f")
+  .replace(/\\n/g, "\n")
+  .replace(/\\r/g, "\r")
+  .replace(/\\t/g, "\t")
+  .replace(/\\v/g, "\v")
+
 export const match = (pattern: string, flags: string[], input: string): MatchResult[] => {
   if(pattern === '') return [];
+  pattern = unescapeString(pattern);
 
   const regex = new RegExp(pattern, flags.join(''));
 
@@ -33,6 +43,8 @@ export const replace = (
   input: string,
   replaceWith: string
 ) => {
+  pattern = unescapeString(pattern);
+  replaceWith = unescapeString(replaceWith);
   const regex = new RegExp(pattern, flags.join(''));
   return input.replace(regex, replaceWith);
 };
@@ -43,6 +55,9 @@ export const list = (
   input: string,
   format: string
 ) => {
+  pattern = unescapeString(pattern);
+  format = unescapeString(format);
+
   const matches = match(pattern, flags, input);
   const formattedMatches = matches.map(
     ({ match: [match, ...group], startIdx, endIdx }) =>
