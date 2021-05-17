@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import randomColor from './randomColor';
 
 interface Operation {
-  id: number;
+  id: number | string;
   pattern: string;
   flags: string[];
   listFormat: string;
@@ -35,12 +35,12 @@ const initialState: PatternState = {
   focus: 0,
 };
 
-const makeOperation = (id: number) => ({
+const makeOperation = (id: string | number) => ({
   ...defaultOperation,
   id,
   color: randomColor(),
 });
-const findOperationById = (state: PatternState, id: number) =>
+const findOperationById = (state: PatternState, id: number | string) =>
   state.operations.find((op) => op.id === id);
 
 const patternSlice = createSlice({
@@ -48,12 +48,12 @@ const patternSlice = createSlice({
   initialState,
   reducers: {
     add(state) {
-      const id = state.operations.length + 1;
+      const id = ("" + Math.random()).slice(2);
       const newOperation = makeOperation(id);
       state.operations.push(newOperation);
       state.focus = state.operations.length - 1;
     },
-    remove(state, action: PayloadAction<{ id: number }>) {
+    remove(state, action: PayloadAction<{ id: number | string }>) {
       const { id } = action.payload;
       const idx = state.operations.findIndex((op) => op.id === id);
 
@@ -65,7 +65,7 @@ const patternSlice = createSlice({
 
       state.operations.splice(idx, 1);
     },
-    move(state, action: PayloadAction<{ id: number; toIdx: number }>) {
+    move(state, action: PayloadAction<{ id: number | string; toIdx: number }>) {
       const { id, toIdx } = action.payload;
       const op = findOperationById(state, id);
 
@@ -83,13 +83,13 @@ const patternSlice = createSlice({
 
       state.focus = toIdx;
     },
-    setPattern(state, action: PayloadAction<{ id: number; pattern: string }>) {
+    setPattern(state, action: PayloadAction<{ id: number | string; pattern: string }>) {
       const { id, pattern } = action.payload;
       const op = findOperationById(state, id);
       if (!op) return;
       op.pattern = pattern;
     },
-    setFlags(state, action: PayloadAction<{ id: number; flags: string[] }>) {
+    setFlags(state, action: PayloadAction<{ id: number | string; flags: string[] }>) {
       const { id, flags } = action.payload;
       const op = findOperationById(state, id);
       if (!op) return;
@@ -97,14 +97,14 @@ const patternSlice = createSlice({
     },
     setListFormat(
       state,
-      action: PayloadAction<{ id: number; listFormat: string }>
+      action: PayloadAction<{ id: number | string; listFormat: string }>
     ) {
       const { id, listFormat } = action.payload;
       const op = findOperationById(state, id);
       if (!op) return;
       op.listFormat = listFormat;
     },
-    setReplace(state, action: PayloadAction<{ id: number; replace: string }>) {
+    setReplace(state, action: PayloadAction<{ id: number | string; replace: string }>) {
       const { id, replace } = action.payload;
       const op = findOperationById(state, id);
       if (!op) return;
