@@ -48,7 +48,7 @@ const patternSlice = createSlice({
   initialState,
   reducers: {
     add(state) {
-      const id = ("" + Math.random()).slice(2);
+      const id = ('' + Math.random()).slice(2);
       const newOperation = makeOperation(id);
       state.operations.push(newOperation);
       state.focus = state.operations.length - 1;
@@ -58,8 +58,8 @@ const patternSlice = createSlice({
       const idx = state.operations.findIndex((op) => op.id === id);
 
       const last = idx === state.operations.length - 1;
-      const focused = idx === state.focus
-      if ((focused && last) || (idx < state.focus)) {
+      const focused = idx === state.focus;
+      if ((focused && last) || idx < state.focus) {
         state.focus--;
       }
 
@@ -83,13 +83,19 @@ const patternSlice = createSlice({
 
       state.focus = toIdx;
     },
-    setPattern(state, action: PayloadAction<{ id: number | string; pattern: string }>) {
+    setPattern(
+      state,
+      action: PayloadAction<{ id: number | string; pattern: string }>
+    ) {
       const { id, pattern } = action.payload;
       const op = findOperationById(state, id);
       if (!op) return;
       op.pattern = pattern;
     },
-    setFlags(state, action: PayloadAction<{ id: number | string; flags: string[] }>) {
+    setFlags(
+      state,
+      action: PayloadAction<{ id: number | string; flags: string[] }>
+    ) {
       const { id, flags } = action.payload;
       const op = findOperationById(state, id);
       if (!op) return;
@@ -104,7 +110,10 @@ const patternSlice = createSlice({
       if (!op) return;
       op.listFormat = listFormat;
     },
-    setReplace(state, action: PayloadAction<{ id: number | string; replace: string }>) {
+    setReplace(
+      state,
+      action: PayloadAction<{ id: number | string; replace: string }>
+    ) {
       const { id, replace } = action.payload;
       const op = findOperationById(state, id);
       if (!op) return;
