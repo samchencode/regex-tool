@@ -56,10 +56,10 @@ const patternSlice = createSlice({
     remove(state, action: PayloadAction<{ id: number }>) {
       const { id } = action.payload;
       const idx = state.operations.findIndex((op) => op.id === id);
-      if (
-        idx === state.operations.length - 1 &&
-        state.focus === state.operations.length - 1
-      ) {
+
+      const last = idx === state.operations.length - 1;
+      const focused = idx === state.focus
+      if ((focused && last) || (idx < state.focus)) {
         state.focus--;
       }
 
