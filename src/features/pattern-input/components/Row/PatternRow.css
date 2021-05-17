@@ -73,4 +73,8 @@ i.pattern-input__color-indicator {
   .pattern-input__input-group--match:not(:only-of-type) {
     display: flex;
   }  
+
+  .pattern-input__regex input {
+    width: auto;
+  }
 }
