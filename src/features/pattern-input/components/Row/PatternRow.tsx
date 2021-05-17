@@ -86,6 +86,7 @@ const Pattern = ({
         className="button--transparent"
         onClick={(e) => {
           e.preventDefault();
+          e.stopPropagation();
           onClickRemove();
         }}
       >
