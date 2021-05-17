@@ -68,3 +68,15 @@ code {
   margin: var(--space-xs);
   padding: var(--space-xs);
 }
+
+.modal {
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.modal--visible {
+  display: block;
+}
