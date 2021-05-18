@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/regex-tool/static/css/main.f6033931.chunk.css",
-    "main.js": "/regex-tool/static/js/main.56c210c6.chunk.js",
-    "main.js.map": "/regex-tool/static/js/main.56c210c6.chunk.js.map",
+    "main.js": "/regex-tool/static/js/main.f6c20ccf.chunk.js",
+    "main.js.map": "/regex-tool/static/js/main.f6c20ccf.chunk.js.map",
     "runtime-main.js": "/regex-tool/static/js/runtime-main.038e518e.js",
     "runtime-main.js.map": "/regex-tool/static/js/runtime-main.038e518e.js.map",
     "static/js/2.e85ae080.chunk.js": "/regex-tool/static/js/2.e85ae080.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.038e518e.js",
     "static/js/2.e85ae080.chunk.js",
     "static/css/main.f6033931.chunk.css",
-    "static/js/main.56c210c6.chunk.js"
+    "static/js/main.f6c20ccf.chunk.js"
   ]
 }

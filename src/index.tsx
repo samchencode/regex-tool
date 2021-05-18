@@ -7,10 +7,12 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
+const isProduction = process.env?.NODE_ENV !== 'development';
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename={isProduction ? '/regex-tool' : '/'}>
         <App />
       </BrowserRouter>
     </Provider>
