@@ -54,6 +54,10 @@ button {
   background: none;
 }
 
+input[type=text] {
+  border-radius: 0;
+}
+
 input::placeholder {
   color: var(--gray);
 }
