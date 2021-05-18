@@ -38,7 +38,7 @@ const TextDisplayContainer = ({ type }: TextDisplayContainerProps) => {
     })),
   });
 
-  const output = results[results.length - 1]?.result ?? input;
+  const output = results[focusIdx]?.result ?? input;
 
   const focusOp = ops[focusIdx];
 
