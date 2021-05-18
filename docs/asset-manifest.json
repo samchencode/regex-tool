@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/regex-tool/static/css/main.f6033931.chunk.css",
+    "main.js": "/regex-tool/static/js/main.56c210c6.chunk.js",
+    "main.js.map": "/regex-tool/static/js/main.56c210c6.chunk.js.map",
+    "runtime-main.js": "/regex-tool/static/js/runtime-main.038e518e.js",
+    "runtime-main.js.map": "/regex-tool/static/js/runtime-main.038e518e.js.map",
+    "static/js/2.e85ae080.chunk.js": "/regex-tool/static/js/2.e85ae080.chunk.js",
+    "static/js/2.e85ae080.chunk.js.map": "/regex-tool/static/js/2.e85ae080.chunk.js.map",
+    "index.html": "/regex-tool/index.html",
+    "static/css/main.f6033931.chunk.css.map": "/regex-tool/static/css/main.f6033931.chunk.css.map",
+    "static/js/2.e85ae080.chunk.js.LICENSE.txt": "/regex-tool/static/js/2.e85ae080.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.038e518e.js",
+    "static/js/2.e85ae080.chunk.js",
+    "static/css/main.f6033931.chunk.css",
+    "static/js/main.56c210c6.chunk.js"
+  ]
+}
