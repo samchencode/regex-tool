@@ -47,6 +47,16 @@ i.pattern-input__color-indicator {
   color: var(--gray);
 }
 
+.pattern-input__flag {
+  position: relative;
+}
+
+.pattern-input__flag .flag-selector {
+  position: absolute;
+  top: 100%;
+  right: 0;
+}
+
 .pattern-input__regex input {
   display: inline;
   padding: 0;
@@ -67,7 +77,6 @@ i.pattern-input__color-indicator {
 .pattern-input__regex input:focus ~ .underline {
   border-bottom: var(--border-focus);
 }
-
 
 @media only screen and (min-width: 800px) {
   .pattern-input__input-group--match:not(:only-of-type) {

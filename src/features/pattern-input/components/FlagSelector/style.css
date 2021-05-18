@@ -1,0 +1,41 @@
+.flag-selector {
+  background-color: var(--bg);
+  padding: var(--space-xs);
+  margin: var(--space-xs) 0;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  display: none;
+}
+
+.flag-selector--visible {
+  display: block;
+}
+
+.flag-selector input.flag-selector__checkbox {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.flag-selector__checkbox:checked + label {
+  background: var(--accent);
+}
+
+.flag-selector__list {
+  display: flex;
+}
+
+.flag-selector__item {
+  margin: 0 var(--space-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flag-selector__label {
+  padding: var(--space-xs) var(--space-sm);
+  border: var(--border);
+  border-radius: var(--border-radius);
+}

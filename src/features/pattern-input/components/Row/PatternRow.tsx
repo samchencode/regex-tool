@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import FlagSelector from '../FlagSelector';
 import './PatternRow.css';
 import './Row.css';
 
@@ -19,6 +20,7 @@ interface PatternRowProps {
   onClick: () => void;
   onClickRemove: () => void;
   onChangePattern: (pattern: string) => void;
+  onChangeFlags: (flags: string[]) => void;
   onChangeListFormat: (listFormat: string) => void;
   onChangeReplace: (replace: string) => void;
 }
@@ -34,6 +36,7 @@ const Pattern = ({
   onClick,
   onClickRemove,
   onChangePattern,
+  onChangeFlags,
   onChangeListFormat,
   onChangeReplace,
 }: PatternRowProps) => {
@@ -43,11 +46,13 @@ const Pattern = ({
     ? onChangeListFormat
     : onChangeReplace;
 
+  const [flagMenuVisible, setFlagMenuVisible] = useState(false);
+
   return (
     <li
       className="pattern-input__row"
       onClick={onClick}
-      style={{...(focus && {boxShadow: `inset 0 0 0px 2px ${color}`})}}
+      style={{ ...(focus && { boxShadow: `inset 0 0 0px 2px ${color}` }) }}
     >
       <i
         className="pattern-input__color-indicator"
@@ -64,7 +69,17 @@ const Pattern = ({
             value={pattern}
             onChange={(e) => onChangePattern(e.target.value)}
           />
-          /<span className="pattern-input__flag">{flags.join('')}</span>
+          /
+          <span className="pattern-input__flag">
+            <span onClick={() => setFlagMenuVisible(!flagMenuVisible)}>
+              {flags.join('')}
+            </span>
+            <FlagSelector
+              visible={flagMenuVisible}
+              flags={flags}
+              onChangeFlags={onChangeFlags}
+            />
+          </span>
           <div className="underline"></div>
         </div>
       </div>
