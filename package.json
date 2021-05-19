@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "author": "Sam Chen",
-  "homepage": "https://samchencode.github.io/regex-tool",
   "license": "MIT",
   "dependencies": {
     "@babel/core": "7.12.3",
@@ -85,7 +84,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "build:gh-pages": "cross-env BUILD_PATH=docs node scripts/build.js"
+    "build:gh-pages": "cross-env BUILD_PATH=docs PUBLIC_PATH=https://samchencode.github.io/regex-tool node scripts/build.js"
   },
   "eslintConfig": {
     "extends": [
